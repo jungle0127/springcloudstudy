@@ -10,11 +10,12 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>registry</module>
+        <module>proxy</module>
     </modules>
 
     <properties>
-        <spring.cloud.version>Finchley.RELEASE</spring.cloud.version>
-        <spring.boot.version>2.1.0.RELEASE</spring.boot.version>
+        <spring.cloud.version>Edgware.RELEASE</spring.cloud.version>
+        <spring.boot.version>1.5.10.RELEASE</spring.boot.version>
     </properties>
 
     <dependencyManagement>
