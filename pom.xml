@@ -11,6 +11,7 @@
     <modules>
         <module>registry</module>
         <module>proxy</module>
+        <module>user</module>
     </modules>
 
     <properties>
