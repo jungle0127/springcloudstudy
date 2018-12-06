@@ -12,6 +12,7 @@
         <module>registry</module>
         <module>proxy</module>
         <module>user</module>
+        <module>order</module>
     </modules>
 
     <properties>
