@@ -9,6 +9,9 @@
         <module name="order" />
         <module name="proxy" />
         <module name="registry" />
+        <module name="tx-jms" />
+        <module name="tx-jpa" />
+        <module name="tx-jta" />
         <module name="user" />
       </profile>
     </annotationProcessing>
