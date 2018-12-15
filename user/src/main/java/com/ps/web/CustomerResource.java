@@ -4,6 +4,7 @@ import com.netflix.discovery.converters.Auto;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.ps.dao.CustomerRepository;
 import com.ps.domain.Customer;
+import com.ps.dto.OrderDTO;
 import com.ps.feign.OrderClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.netflix.feign.FeignClient;
@@ -48,7 +49,7 @@ public class CustomerResource {
     @HystrixCommand
     public Map getInfo(){
         Customer customer = this.customerRepository.findOneByUsername("ps");
-        String order = this.orderClient.getOrderProxy(1L);
+        OrderDTO order = this.orderClient.getOrderProxy(1L);
         Map result = new HashMap();
         result.put("customer",customer);
         result.put("order", order);

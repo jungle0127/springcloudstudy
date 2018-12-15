@@ -13,6 +13,7 @@
         <module name="tx-jpa" />
         <module name="tx-jta" />
         <module name="user" />
+        <module name="user-order-model" />
       </profile>
     </annotationProcessing>
   </component>

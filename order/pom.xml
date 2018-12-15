@@ -21,6 +21,11 @@
 
     <dependencies>
         <dependency>
+            <groupId>com.ps</groupId>
+            <artifactId>user-order-model</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
             <scope>runtime</scope>

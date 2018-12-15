@@ -2,6 +2,8 @@ package com.ps.web;
 
 import com.ps.dao.OrderRepository;
 import com.ps.domain.Order;
+import com.ps.dto.IOrderService;
+import com.ps.dto.OrderDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,7 +15,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/api/order")
-public class OrderResource  {
+public class OrderResource implements IOrderService {
 
     @Autowired
     private OrderRepository orderRepository;
@@ -36,9 +38,14 @@ public class OrderResource  {
         return orderRepository.findAll();
     }
     @GetMapping("/{id}")
-    public String getOrder(@PathVariable Long id){
+    public OrderDTO getOrderProxy(@PathVariable Long id){
         Order order = this.orderRepository.findOne(id);
-        return order.getTitle();
+        OrderDTO dto = new OrderDTO();
+        dto.setAmount(order.getAmount());
+        dto.setDetail(order.getDetail());
+        dto.setId(order.getId());
+        dto.setTitle(order.getTitle());
+        return dto;
     }
 
 }
