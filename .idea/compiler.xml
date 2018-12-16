@@ -9,6 +9,7 @@
         <module name="order" />
         <module name="proxy" />
         <module name="registry" />
+        <module name="spring-dtx-db-db" />
         <module name="tx-jms" />
         <module name="tx-jpa" />
         <module name="tx-jta" />

@@ -22,5 +22,6 @@
         <module>tx-jpa</module>
         <module>tx-jms</module>
         <module>tx-jta</module>
+        <module>spring-dtx-db-db</module>
     </modules>
 </project>
