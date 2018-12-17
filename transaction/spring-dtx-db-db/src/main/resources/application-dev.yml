@@ -1,0 +1,12 @@
+spring:
+  userDatasource:
+    url: jdbc:mysql://localhost:3306/ncee
+    username: root
+    password: lotus
+    driver-class-name: com.mysql.jdbc.Driver
+  orderDatasource:
+    url: jdbc:mysql://localhost:3306/ps
+    username: root
+    password: lotus
+    driver-class-name: com.mysql.jdbc.Driver
+
