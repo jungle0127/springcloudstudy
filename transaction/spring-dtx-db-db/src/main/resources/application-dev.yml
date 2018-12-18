@@ -1,11 +1,13 @@
+logging:
+  config: classpath:log/logback-spring.xml
 spring:
   userDatasource:
-    url: jdbc:mysql://localhost:3306/ncee
+    url: jdbc:mysql://192.168.1.6:3308/customer
     username: root
     password: lotus
     driver-class-name: com.mysql.jdbc.Driver
   orderDatasource:
-    url: jdbc:mysql://localhost:3306/ps
+    url: jdbc:mysql://192.168.1.6:3307/order
     username: root
     password: lotus
     driver-class-name: com.mysql.jdbc.Driver

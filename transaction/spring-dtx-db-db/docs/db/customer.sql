@@ -8,3 +8,4 @@ CREATE TABLE `customer`(
     `username` varchar(50) NOT NULL,
     `deposit` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+insert into customer(`username`,`deposit`) values('ps',1000);

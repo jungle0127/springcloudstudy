@@ -17,18 +17,5 @@
         <module name="user-order-model" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="order" target="1.8" />
-      <module name="proxy" target="1.8" />
-      <module name="registry" target="1.5" />
-      <module name="spring-dtx-db-db" target="1.8" />
-      <module name="springcloudstudy" target="1.5" />
-      <module name="transaction" target="1.8" />
-      <module name="tx-jms" target="1.8" />
-      <module name="tx-jpa" target="1.8" />
-      <module name="tx-jta" target="1.8" />
-      <module name="user" target="1.8" />
-      <module name="user-order-model" target="1.5" />
-    </bytecodeTargetLevel>
   </component>
 </project>
