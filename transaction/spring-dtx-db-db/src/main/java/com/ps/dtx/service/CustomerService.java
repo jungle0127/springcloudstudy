@@ -25,7 +25,13 @@ public class CustomerService {
     @Transactional
     public void createOrder(Order order){
         userJdbcTemplate.update(SQL_UPDATE_DEPOSIT, order.getAmount(), order.getCustomerId());
+        if(order.getTitle().contains("error1")){
+            throw new RuntimeException("Error1");
+        }
         orderJdbcTemplate.update(SQL_CREATE_ORDER, order.getCustomerId(), order.getTitle(), order.getAmount());
+        if(order.getTitle().contains("error2")){
+            throw new RuntimeException("Error2");
+        }
     }
     public Map<String,String> userInfo(Long customerId){
         Map customer = userJdbcTemplate.queryForMap("SELECT * from customer where id = " + customerId);

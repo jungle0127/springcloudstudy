@@ -7,7 +7,10 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
+import org.springframework.data.transaction.ChainedTransactionManager;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.datasource.DataSourceTransactionManager;
+import org.springframework.transaction.PlatformTransactionManager;
 
 import javax.sql.DataSource;
 import javax.xml.crypto.Data;
@@ -29,6 +32,16 @@ public class DBConfiguration {
     public JdbcTemplate userJdbcTemplate(@Qualifier("userDataSource") DataSource userDataSource){
         return new JdbcTemplate(userDataSource);
     }
+    @Bean
+    public PlatformTransactionManager transactionManager(){
+        DataSourceTransactionManager userTM = new DataSourceTransactionManager(userDataSource());
+        // userDataSource(), AOP的方式从容器中获取，非简单的方法调用
+        // userTM.setDataSource(userDataSource()); 这个不是从容器中获取
+        DataSourceTransactionManager orderTM = new DataSourceTransactionManager(orderDataSource());
+        ChainedTransactionManager chainedTransactionManager = new ChainedTransactionManager(userTM,orderTM);
+        return chainedTransactionManager;
+    }
+
     @Bean
     @ConfigurationProperties(prefix = "spring.orderDatasource")
     public DataSourceProperties orderDataSourceProperties(){

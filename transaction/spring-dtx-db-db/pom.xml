@@ -12,6 +12,7 @@
 
     <properties>
         <swagger.version>2.8.0</swagger.version>
+        <spring.data.commons.version>1.13.9.RELEASE</spring.data.commons.version>
     </properties>
 
     <dependencies>
@@ -22,6 +23,12 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-jdbc</artifactId>
+        </dependency>
+        <!-- 链式事务 -->
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-commons</artifactId>
+            <version>${spring.data.commons.version}</version>
         </dependency>
         <!-- datasource缓冲池 -->
         <dependency>
