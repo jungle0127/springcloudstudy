@@ -15,6 +15,7 @@
         <module>order</module>
         <module>transaction</module>
         <module>user-order-model</module>
+        <module>distributed-transaction</module>
     </modules>
 
     <properties>

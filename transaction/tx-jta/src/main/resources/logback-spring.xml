@@ -18,7 +18,7 @@
     <logger name="org.hibernate.jpa" level="DEBUG"/>
     <logger name="org.hibernate.SQL" level="DEBUG"/>
 
-    <logger name="org.apache.activemq" level="DEBUG"/>
+    <logger name="org.apache.activemq" level="INFO"/>
 
 
     <root level="INFO">
