@@ -8,13 +8,16 @@
         <outputRelativeToContentRoot value="true" />
         <module name="dt-tx-jta" />
         <module name="order" />
+        <module name="order (1)" />
         <module name="proxy" />
         <module name="registry" />
         <module name="spring-dtx-db-db" />
+        <module name="ticket" />
         <module name="tx-jms" />
         <module name="tx-jpa" />
         <module name="tx-jta" />
         <module name="user" />
+        <module name="user (1)" />
         <module name="user-order-model" />
       </profile>
     </annotationProcessing>
