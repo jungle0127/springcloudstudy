@@ -1,0 +1,17 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: md-proxy-zuul
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-register: true
+    serviceUrl:
+      defaultZone: http://ps:lotus@localhost:8786/eureka
+zuul:
+  routes:
+    userApi:
+      path: /home/**
+      serviceId: user
+      stripPrefix: false

@@ -1,4 +1,4 @@
-package com.ps.tx.md.ticket;
+package com.ps.tx.md.order;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -6,8 +6,8 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 
 @SpringBootApplication
 @EnableEurekaClient
-public class TicketBootApplication {
+public class OrderBootApplication {
     public static void main(String[] args) {
-        SpringApplication.run(TicketBootApplication.class,args);
+        SpringApplication.run(OrderBootApplication.class,args);
     }
 }

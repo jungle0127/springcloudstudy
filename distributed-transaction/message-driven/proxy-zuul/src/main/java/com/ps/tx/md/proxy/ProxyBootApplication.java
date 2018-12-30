@@ -1,13 +1,15 @@
-package com.ps.tx.md.ticket;
+package com.ps.tx.md.proxy;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
+import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
 
 @SpringBootApplication
 @EnableEurekaClient
-public class TicketBootApplication {
+@EnableZuulProxy
+public class ProxyBootApplication {
     public static void main(String[] args) {
-        SpringApplication.run(TicketBootApplication.class,args);
+        SpringApplication.run(ProxyBootApplication.class,args);
     }
 }
