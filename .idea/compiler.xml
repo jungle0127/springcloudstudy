@@ -11,29 +11,31 @@
         <module name="activemq-producer-queue" />
         <module name="activemq-producer-topic" />
         <module name="dt-tx-jta" />
+        <module name="md-ticket" />
+        <module name="md-user" />
+        <module name="ms-order-core" />
+        <module name="ms-order-model" />
+        <module name="ms-proxy" />
+        <module name="ms-registry" />
+        <module name="ms-user" />
         <module name="order-core" />
         <module name="order-model" />
-        <module name="proxy" />
         <module name="proxy-zuul" />
-        <module name="registry" />
         <module name="registry-center" />
         <module name="spring-dtx-db-db" />
-        <module name="ticket" />
         <module name="tx-jms" />
         <module name="tx-jpa" />
         <module name="tx-jta" />
-        <module name="user" />
-        <module name="user-order-model" />
-      </profile>
-      <profile name="Annotation profile for springcloudstudy" enabled="true">
-        <sourceOutputDir name="../../../user/target/generated-sources/annotations" />
-        <sourceTestOutputDir name="../../../user/target/generated-test-sources/test-annotations" />
-        <outputRelativeToContentRoot value="true" />
-        <module name="user (1)" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="activemq-demo" target="1.5" />
+      <module name="order" target="1.8" />
+      <module name="proxy" target="1.8" />
+      <module name="registry" target="1.5" />
+      <module name="ticket" target="1.5" />
+      <module name="user" target="1.8" />
+      <module name="user-order-model" target="1.5" />
     </bytecodeTargetLevel>
   </component>
 </project>
