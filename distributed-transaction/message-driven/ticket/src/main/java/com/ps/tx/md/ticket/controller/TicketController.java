@@ -3,10 +3,8 @@ package com.ps.tx.md.ticket.controller;
 import com.ps.tx.md.ticket.dao.TicketRepository;
 import com.ps.tx.md.ticket.domain.Ticket;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import javax.annotation.PostConstruct;
 
 @RestController
@@ -21,4 +19,5 @@ public class TicketController {
         ticket.setTicketNumber(100L);
         ticketRepository.save(ticket);
     }
+
 }

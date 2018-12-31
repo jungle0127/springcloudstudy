@@ -6,20 +6,34 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="activemq-consumer-queue" />
+        <module name="activemq-consumer-topic" />
+        <module name="activemq-producer-queue" />
+        <module name="activemq-producer-topic" />
         <module name="dt-tx-jta" />
-        <module name="order" />
-        <module name="order (1)" />
+        <module name="order-core" />
+        <module name="order-model" />
         <module name="proxy" />
+        <module name="proxy-zuul" />
         <module name="registry" />
+        <module name="registry-center" />
         <module name="spring-dtx-db-db" />
         <module name="ticket" />
         <module name="tx-jms" />
         <module name="tx-jpa" />
         <module name="tx-jta" />
         <module name="user" />
-        <module name="user (1)" />
         <module name="user-order-model" />
       </profile>
+      <profile name="Annotation profile for springcloudstudy" enabled="true">
+        <sourceOutputDir name="../../../user/target/generated-sources/annotations" />
+        <sourceTestOutputDir name="../../../user/target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="user (1)" />
+      </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="activemq-demo" target="1.5" />
+    </bytecodeTargetLevel>
   </component>
 </project>

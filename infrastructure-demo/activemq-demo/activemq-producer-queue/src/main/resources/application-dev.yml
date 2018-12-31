@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: activemq-producer
+  jms:
+    pub-sub-domain: false # 配置消息的类型，如果是true则表示为topic消息，如果为false表示Queue消息
+  activemq:
+    user: admin
+    password: admin
+    broker-url: tcp://192.168.1.6:61616

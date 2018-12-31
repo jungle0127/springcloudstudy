@@ -3,6 +3,14 @@ server:
 spring:
   application:
     name: md-order
+  datasource:
+    url: jdbc:mysql://192.168.1.6:3307/md_order
+    username: root
+    password: lotus
+    driver-class-name: com.mysql.jdbc.Driver
+  jpa:
+     hibernate:
+       ddl-auto: update
 eureka:
   client:
     serviceUrl:
