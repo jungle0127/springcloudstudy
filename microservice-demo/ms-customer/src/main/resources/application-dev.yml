@@ -1,11 +1,11 @@
 server:
   port: 8082
-
+  servlet:
+    context-path: /ms-user
 spring:
   application:
     name: ms-user
   datasource:
-    name: primaryDataSource
     username: root
     password: lotus
     url: jdbc:mysql://192.168.1.6:3308/ms_user?sessionVariables=foreign_key_checks=0&serverTimezone=CTT&useSSL=false&useUnicode=true&characterEncoding=utf8&autoReconnect=true&failOverReadOnly=false&maxReconnects=10

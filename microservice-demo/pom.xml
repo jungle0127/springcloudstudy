@@ -14,8 +14,8 @@
     <modules>
         <module>ms-registry</module>
         <module>ms-proxy</module>
-        <module>ms-user</module>
         <module>ms-order</module>
+        <module>ms-customer</module>
     </modules>
 
 

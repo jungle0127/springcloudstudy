@@ -9,13 +9,13 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @SpringBootApplication
-//@EnableEurekaClient
-//@EnableHystrix
-//@EnableFeignClients
-@MapperScan(basePackages = "com.ps.ms.user.dao.mapper")
 @EnableSwagger2
-public class UserApplication {
+@MapperScan(basePackages = "com.ps.ms.user.dao.mapper")
+@EnableEurekaClient
+@EnableHystrix
+@EnableFeignClients
+public class MSUserApplication {
     public static void main(String[] args) {
-        SpringApplication.run(UserApplication.class,args);
+        SpringApplication.run(MSUserApplication.class,args);
     }
 }

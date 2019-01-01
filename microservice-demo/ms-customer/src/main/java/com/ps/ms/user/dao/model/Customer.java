@@ -40,14 +40,4 @@ public class Customer {
     public void setDeposit(Integer deposit) {
         this.deposit = deposit;
     }
-
-    @Override
-    public String toString() {
-        return "Customer{" +
-                "id=" + id +
-                ", username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                ", deposit=" + deposit +
-                '}';
-    }
 }
