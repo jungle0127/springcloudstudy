@@ -11,7 +11,6 @@
     <packaging>pom</packaging>
     <artifactId>microservice-demo</artifactId>
     <modelVersion>4.0.0</modelVersion>
-
     <modules>
         <module>ms-registry</module>
         <module>ms-proxy</module>
