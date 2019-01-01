@@ -3,6 +3,7 @@ package com.ps.ms.order.controller;
 import com.ps.ms.order.domain.Order;
 import com.ps.ms.order.dto.OrderDTO;
 import com.ps.ms.order.repository.OrderRepository;
+import com.ps.ms.order.service.IOrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,7 +13,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/v1/order")
-public class OrderController {
+public class OrderController implements IOrderService {
     @Autowired
     private OrderRepository orderRepository;
     @PostConstruct

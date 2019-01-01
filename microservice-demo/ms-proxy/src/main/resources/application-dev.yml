@@ -5,13 +5,13 @@ spring:
     name: ms-proxy
 eureka:
   client:
-    register-with_eureka: true
-    fetch-register: true
+#    register-with-eureka: true
+#    fetch-register: true
     serviceUrl:
       defaultZone: http://ps:lotus@localhost:8761/eureka
 zuul:
   routes:
     userApi:
-      path: /home/**
-      serviceId: user
+      path: /api/v1/**
+      serviceId: ms-order
       stripPrefix: false
