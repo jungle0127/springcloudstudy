@@ -3,6 +3,11 @@ server:
 spring:
   application:
     name: ms-order
+  datasource:
+    username: root
+    password: lotus
+    url: jdbc:mysql://192.168.1.6:3307/ms_order?sessionVariables=foreign_key_checks=0&serverTimezone=CTT&useSSL=false&useUnicode=true&characterEncoding=utf8&autoReconnect=true&failOverReadOnly=false&maxReconnects=10
+    driver-class-name: com.mysql.jdbc.Driver
 eureka:
   client:
     serviceUrl:

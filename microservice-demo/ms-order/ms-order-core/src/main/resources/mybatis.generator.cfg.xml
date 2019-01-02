@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+    <classPathEntry location="C:\\Software\\mvnRepository\\mysql\\mysql-connector-java\\5.1.47\\mysql-connector-java-5.1.47.jar"/>
+    <context id="ncee" targetRuntime="MyBatis3">
+        <commentGenerator>
+            <property name="suppressDate" value="true"/>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+        <!-- DB connection information -->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://192.168.1.6:3307/ms_order?useUnicode=true&amp;characterEncoding=UTF-8&amp;serverTimezone=UTC" userId="root" password="lotus">
+        </jdbcConnection>
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+        <!-- Location of Model classes -->
+        <!-- D:\githubworkspace\springcloudstudy\microservice-demo\ms-user -->
+        <javaModelGenerator targetPackage="com.ps.ms.order.dao.model" targetProject="D:\\githubworkspace\\springcloudstudy\\microservice-demo\\ms-order\\ms-order-core\\src\\main\\java">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+        <!-- Location of mapper files -->
+        <!--<sqlMapGenerator targetPackage="com.ps.ms.user.dao.mapper" targetProject="D:\\githubworkspace\\springcloudstudy\\microservice-demo\\ms-user\\src\\main\\java">-->
+            <!--<property name="enableSubPackages" value="true"></property>-->
+        <!--</sqlMapGenerator>-->
+        <!--  Location of DAO classes -->
+        <javaClientGenerator targetPackage="com.ps.ms.order.dao.mapper" targetProject="D:\\githubworkspace\\springcloudstudy\\microservice-demo\\ms-order\\ms-order-core\\src\\main\\java" type="ANNOTATEDMAPPER">
+            <property name="enableSubPackages" value="true"></property>
+        </javaClientGenerator>
+        <!-- related table and classese -->
+        <table schema="ms_order" tableName="order" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+            <property name="selectAllOrderByClause" value="id desc"/>
+        </table>
+    </context>
+</generatorConfiguration>

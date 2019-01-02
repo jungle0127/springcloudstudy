@@ -1,17 +1,13 @@
-package com.ps.ms.order.domain;
+package com.ps.ms.order.dao.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-
-@Entity(name = "customer_order")
 public class Order {
-    @Id
-    @GeneratedValue
     private Long id;
+
     private String title;
+
     private String detail;
-    private int amount;
+
+    private Integer amount;
 
     public Long getId() {
         return id;
@@ -26,7 +22,7 @@ public class Order {
     }
 
     public void setTitle(String title) {
-        this.title = title;
+        this.title = title == null ? null : title.trim();
     }
 
     public String getDetail() {
@@ -34,14 +30,14 @@ public class Order {
     }
 
     public void setDetail(String detail) {
-        this.detail = detail;
+        this.detail = detail == null ? null : detail.trim();
     }
 
-    public int getAmount() {
+    public Integer getAmount() {
         return amount;
     }
 
-    public void setAmount(int amount) {
+    public void setAmount(Integer amount) {
         this.amount = amount;
     }
 }
