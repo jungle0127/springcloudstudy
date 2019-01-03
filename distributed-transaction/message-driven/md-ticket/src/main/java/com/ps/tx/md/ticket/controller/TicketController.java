@@ -1,7 +1,7 @@
 package com.ps.tx.md.ticket.controller;
 
-import com.ps.tx.md.ticket.dao.TicketRepository;
-import com.ps.tx.md.ticket.domain.Ticket;
+import com.ps.tx.md.ticket.dao.model.Ticket;
+import com.ps.tx.md.ticket.dao.repository.TicketRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
