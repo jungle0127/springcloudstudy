@@ -43,6 +43,20 @@ public interface TicketMapper {
         @Result(column="ticket_number", property="ticketNumber", jdbcType=JdbcType.BIGINT)
     })
     Ticket selectByPrimaryKey(Long id);
+    @Select({
+            "select",
+            "id, name, owner, lock_user, ticket_number",
+            "from ticket",
+            "where ticket_number = #{ticketNumber,jdbcType=BIGINT}"
+    })
+    @Results({
+            @Result(column="id", property="id", jdbcType=JdbcType.BIGINT, id=true),
+            @Result(column="name", property="name", jdbcType=JdbcType.VARCHAR),
+            @Result(column="owner", property="owner", jdbcType=JdbcType.BIGINT),
+            @Result(column="lock_user", property="lockUser", jdbcType=JdbcType.BIGINT),
+            @Result(column="ticket_number", property="ticketNumber", jdbcType=JdbcType.BIGINT)
+    })
+    Ticket selectByTicketNumber(Long ticketNumber);
 
     @UpdateProvider(type=TicketSqlProvider.class, method="updateByPrimaryKeySelective")
     int updateByPrimaryKeySelective(Ticket record);

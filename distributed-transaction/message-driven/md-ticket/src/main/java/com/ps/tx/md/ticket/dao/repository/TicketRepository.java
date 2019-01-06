@@ -10,7 +10,10 @@ public class TicketRepository {
     @Autowired
     private TicketMapper ticketMapper;
     public Ticket save(Ticket ticket){
-        this.ticketMapper.insert(ticket);
+        this.ticketMapper.updateByPrimaryKeySelective(ticket);
         return ticket;
+    }
+    public Ticket findByTicketNumber(Long ticketNumber){
+        return this.ticketMapper.selectByTicketNumber(ticketNumber);
     }
 }

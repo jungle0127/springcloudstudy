@@ -1,4 +1,4 @@
-package com.ps.tx.md.ticket.config;
+package com.ps.tx.md.user.config;
 
 import org.apache.activemq.ActiveMQConnectionFactory;
 import org.springframework.boot.autoconfigure.jms.DefaultJmsListenerContainerFactoryConfigurer;
@@ -15,9 +15,6 @@ import org.springframework.transaction.PlatformTransactionManager;
 
 import javax.jms.ConnectionFactory;
 
-/**
- * @author PS
- */
 @Configuration
 public class JmsConfig {
     @Bean
