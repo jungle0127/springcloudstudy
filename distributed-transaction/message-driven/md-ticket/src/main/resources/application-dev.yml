@@ -4,13 +4,10 @@ spring:
   application:
     name: md-ticket
   datasource:
-    url: jdbc:mysql://192.168.1.6:3309/md-ticket
+    url: jdbc:mysql://192.168.1.7:3309/md-ticket
     username: root
     password: lotus
     driver-class-name: com.mysql.jdbc.Driver
-  jpa:
-    hibernate:
-      ddl-auto: update # 自动创建表结构
 eureka:
   client:
     servcieUrl:

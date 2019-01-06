@@ -2,9 +2,9 @@ package com.ps.tx.md.user.controller;
 
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.ps.tx.md.order.model.OrderDTO;
-import com.ps.tx.md.user.domain.Customer;
+import com.ps.tx.md.user.dao.model.MdCustomer;
+import com.ps.tx.md.user.dao.repository.CustomerRepository;
 import com.ps.tx.md.user.feignservice.OrderClient;
-import com.ps.tx.md.user.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,26 +21,26 @@ public class CustomerController {
     private OrderClient orderClient;
     @PostMapping
     public void init(){
-        Customer customer = new Customer();
+        MdCustomer customer = new MdCustomer();
         customer.setUsername("ps");
         customer.setPassword("111111");
         customer.setRole("User");
         this.customerRepository.save(customer);
     }
     @PostMapping("")
-    public Customer createCustomer(@RequestBody Customer customer){
+    public MdCustomer createCustomer(@RequestBody MdCustomer customer){
         return this.customerRepository.save(customer);
     }
     @GetMapping("")
     @HystrixCommand
-    public List<Customer> getAllCustomers(){
+    public List<MdCustomer> getAllCustomers(){
         return this.customerRepository.findAll();
     }
 
     @GetMapping("/me")
     @HystrixCommand
     public Map getMyInfo(){
-        Customer customer = this.customerRepository.findOneByUsername("ps");
+        MdCustomer customer = this.customerRepository.findByUsername("ps");
         OrderDTO orderDTO = this.orderClient.getOrderProxy(1L);
         Map<String,Object> resultMap = new HashMap<String, Object>();
         resultMap.put("customer", customer);

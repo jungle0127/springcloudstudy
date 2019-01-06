@@ -4,13 +4,10 @@ spring:
   application:
     name: md-user
   datasource:
-    url: jdbc:mysql://192.168.1.6:3308/md_user
+    url: jdbc:mysql://192.168.1.7:3308/md_user
     username: root
     password: lotus
     driver-class-name: com.mysql.jdbc.Driver
-  jpa:
-    hibernate:
-      ddl-auto: update
 eureka:
   client:
     serviceUrl:

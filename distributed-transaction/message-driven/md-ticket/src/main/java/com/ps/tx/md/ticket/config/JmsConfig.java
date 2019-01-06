@@ -26,6 +26,7 @@ public class JmsConfig {
         TransactionAwareConnectionFactoryProxy transactionAwareConnectionFactoryProxy = new TransactionAwareConnectionFactoryProxy();
         transactionAwareConnectionFactoryProxy.setTargetConnectionFactory(connectionFactory);
         transactionAwareConnectionFactoryProxy.setSynchedLocalTransactionAllowed(true);
+        // 做事务同步
         return transactionAwareConnectionFactoryProxy;
     }
     @Bean
@@ -42,12 +43,15 @@ public class JmsConfig {
         DefaultJmsListenerContainerFactory factory = new DefaultJmsListenerContainerFactory();
         jmsListenerContainerFactoryConfigurer.configure(factory,connectionFactory);
         factory.setReceiveTimeout(10000L);
-        factory.setCacheLevelName("CACHE_CONNECTION");
+//        factory.setCacheLevelName("CACHE_CONNECTION"); 独立的服务器不需要此行配置
         factory.setTransactionManager(transactionManager);
         factory.setConcurrency("10");
         return factory;
     }
     @Bean
+    /**
+     * 转换Java对象到JSON数据
+     */
     public MessageConverter jacksonJmsMessageConverter(){
         MappingJackson2MessageConverter messageConverter = new MappingJackson2MessageConverter();
         messageConverter.setTargetType(MessageType.TEXT);

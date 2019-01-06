@@ -8,27 +8,27 @@
             <property name="suppressAllComments" value="true"/>
         </commentGenerator>
         <!-- DB connection information -->
-        <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://192.168.1.6:3309/md_ticket?useUnicode=true&amp;characterEncoding=UTF-8&amp;serverTimezone=UTC" userId="root" password="lotus">
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://192.168.1.7:3307/md_order?useUnicode=true&amp;characterEncoding=UTF-8&amp;serverTimezone=UTC" userId="root" password="lotus">
         </jdbcConnection>
         <javaTypeResolver>
             <property name="forceBigDecimals" value="false"/>
         </javaTypeResolver>
         <!-- Location of Model classes -->
         <!-- D:\githubworkspace\springcloudstudy\microservice-demo\ms-user -->
-        <javaModelGenerator targetPackage="com.ps.tx.md.ticket.dao.model" targetProject="D:\\githubworkspace\\springcloudstudy\\distributed-transaction\\message-driven\\md-ticket\\src\\main\\java">
+        <javaModelGenerator targetPackage="com.ps.tx.md.order.dao.model" targetProject="D:\\githubworkspace\\springcloudstudy\\distributed-transaction\\message-driven\\md-order\\order-core\\src\\main\\java">
             <property name="enableSubPackages" value="true"/>
             <property name="trimStrings" value="true"/>
         </javaModelGenerator>
         <!-- Location of mapper files -->
         <!--<sqlMapGenerator targetPackage="com.ps.ms.user.dao.mapper" targetProject="D:\\githubworkspace\\springcloudstudy\\microservice-demo\\ms-user\\src\\main\\java">-->
-            <!--<property name="enableSubPackages" value="true"></property>-->
+        <!--<property name="enableSubPackages" value="true"></property>-->
         <!--</sqlMapGenerator>-->
         <!--  Location of DAO classes -->
-        <javaClientGenerator targetPackage="com.ps.tx.md.ticket.dao.mapper" targetProject="D:\\githubworkspace\\springcloudstudy\\distributed-transaction\\message-driven\\md-ticket\\src\\main\\java" type="ANNOTATEDMAPPER">
+        <javaClientGenerator targetPackage="com.ps.tx.md.order.dao.mapper" targetProject="D:\\githubworkspace\\springcloudstudy\\distributed-transaction\\message-driven\\md-order\\order-core\\src\\main\\java" type="ANNOTATEDMAPPER">
             <property name="enableSubPackages" value="true"></property>
         </javaClientGenerator>
         <!-- related table and classese -->
-        <table schema="md_ticket" tableName="ticket" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+        <table schema="md_order" tableName="md_order" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
             <property name="selectAllOrderByClause" value="id desc"/>
         </table>
     </context>
