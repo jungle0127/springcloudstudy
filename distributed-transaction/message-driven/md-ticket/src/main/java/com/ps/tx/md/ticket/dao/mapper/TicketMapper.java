@@ -70,4 +70,8 @@ public interface TicketMapper {
         "where id = #{id,jdbcType=BIGINT}"
     })
     int updateByPrimaryKey(Ticket record);
+    @Update({
+            "update ticket set lock_user= #{customerId, jdbcType=BIGINT} where lock_user is NOT null and ticket_number=#{ticketNumber, jdbcType=BIGINT}"
+    })
+    int updateByTicketNumber(Long customerId, Long ticketNumber);
 }
