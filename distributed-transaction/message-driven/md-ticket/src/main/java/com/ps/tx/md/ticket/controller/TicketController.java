@@ -1,6 +1,7 @@
 package com.ps.tx.md.ticket.controller;
 
 import com.ps.tx.md.order.model.OrderDTO;
+import com.ps.tx.md.ticket.dao.model.MdTicket;
 import com.ps.tx.md.ticket.dao.repository.TicketRepository;
 import com.ps.tx.md.ticket.service.TicketServcie;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +20,7 @@ public class TicketController {
     private TicketServcie ticketServcie;
     @PostConstruct
     public void init(){
-        Ticket ticket = new Ticket();
+        MdTicket ticket = new MdTicket();
         ticket.setName("NO.1");
         ticket.setTicketNumber(100L);
         ticketRepository.save(ticket);
