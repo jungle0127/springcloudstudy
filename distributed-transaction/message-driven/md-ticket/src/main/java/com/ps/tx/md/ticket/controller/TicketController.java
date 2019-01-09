@@ -1,7 +1,6 @@
 package com.ps.tx.md.ticket.controller;
 
 import com.ps.tx.md.order.model.OrderDTO;
-import com.ps.tx.md.ticket.dao.model.Ticket;
 import com.ps.tx.md.ticket.dao.repository.TicketRepository;
 import com.ps.tx.md.ticket.service.TicketServcie;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,6 +1,6 @@
 package com.ps.tx.md.ticket.dao.model;
 
-public class Ticket {
+public class MdTicket {
     private Long id;
 
     private String name;

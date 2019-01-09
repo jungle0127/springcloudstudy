@@ -1,7 +1,6 @@
 package com.ps.tx.md.ticket.service;
 
 import com.ps.tx.md.order.model.OrderDTO;
-import com.ps.tx.md.ticket.dao.model.Ticket;
 import com.ps.tx.md.ticket.dao.repository.TicketRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

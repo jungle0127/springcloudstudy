@@ -8,7 +8,7 @@
             <property name="suppressAllComments" value="true"/>
         </commentGenerator>
         <!-- DB connection information -->
-        <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://192.168.1.6:3309/md_ticket?useUnicode=true&amp;characterEncoding=UTF-8&amp;serverTimezone=UTC" userId="root" password="lotus">
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://192.168.1.7:3309/md_ticket?useUnicode=true&amp;characterEncoding=UTF-8&amp;serverTimezone=UTC" userId="root" password="lotus">
         </jdbcConnection>
         <javaTypeResolver>
             <property name="forceBigDecimals" value="false"/>
@@ -28,7 +28,7 @@
             <property name="enableSubPackages" value="true"></property>
         </javaClientGenerator>
         <!-- related table and classese -->
-        <table schema="md_ticket" tableName="ticket" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+        <table schema="md_ticket" tableName="md_ticket" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
             <property name="selectAllOrderByClause" value="id desc"/>
         </table>
     </context>

@@ -1,13 +1,13 @@
 package com.ps.tx.md.ticket.dao.mapper;
 
-import com.ps.tx.md.ticket.dao.model.Ticket;
+import com.ps.tx.md.ticket.dao.model.MdTicket;
 import org.apache.ibatis.jdbc.SQL;
 
-public class TicketSqlProvider {
+public class MdTicketSqlProvider {
 
-    public String insertSelective(Ticket record) {
+    public String insertSelective(MdTicket record) {
         SQL sql = new SQL();
-        sql.INSERT_INTO("ticket");
+        sql.INSERT_INTO("md_ticket");
         
         if (record.getId() != null) {
             sql.VALUES("id", "#{id,jdbcType=BIGINT}");
@@ -32,9 +32,9 @@ public class TicketSqlProvider {
         return sql.toString();
     }
 
-    public String updateByPrimaryKeySelective(Ticket record) {
+    public String updateByPrimaryKeySelective(MdTicket record) {
         SQL sql = new SQL();
-        sql.UPDATE("ticket");
+        sql.UPDATE("md_ticket");
         
         if (record.getName() != null) {
             sql.SET("name = #{name,jdbcType=VARCHAR}");

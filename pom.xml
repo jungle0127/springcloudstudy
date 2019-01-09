@@ -13,6 +13,7 @@
         <module>distributed-transaction</module>
         <module>infrastructure-demo</module>
         <module>microservice-demo</module>
+        <module>mvc</module>
     </modules>
 
     <properties>
