@@ -1,14 +1,7 @@
 package com.ps.tx.md.ticket.dao.mapper;
 
 import com.ps.tx.md.ticket.dao.model.MdTicket;
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.InsertProvider;
-import org.apache.ibatis.annotations.Result;
-import org.apache.ibatis.annotations.Results;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
-import org.apache.ibatis.annotations.UpdateProvider;
+import org.apache.ibatis.annotations.*;
 import org.apache.ibatis.type.JdbcType;
 
 public interface MdTicketMapper {
@@ -58,7 +51,7 @@ public interface MdTicketMapper {
     int updateByPrimaryKey(MdTicket record);
 
     @Update({
-            "update md_ticket set lock_user= #{customerId, jdbcType=BIGINT} where lock_user is NOT null and ticket_number=#{ticketNumber, jdbcType=BIGINT}"
+            "update md_ticket set lock_user= #{customerId, jdbcType=BIGINT} where lock_user is null and ticket_number=#{ticketNumber, jdbcType=BIGINT}"
     })
-    int updateByTicketNumber(Long customerId, Long ticketNumber);
+    int updateByTicketNumber4LockTicket(@Param("customerId") Long customerId, @Param("ticketNumber") Long ticketNumber);
 }

@@ -26,8 +26,7 @@ public class TicketController {
         ticketRepository.save(ticket);
     }
     @PostMapping("/lock")
-    public void lockTicket(@RequestBody  OrderDTO orderDTO){
-
-        return;
+    public Integer lockTicket(@RequestBody  OrderDTO orderDTO){
+        return this.ticketServcie.ticketLock(orderDTO);
     }
 }

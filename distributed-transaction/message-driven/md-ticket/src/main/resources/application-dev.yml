@@ -4,7 +4,7 @@ spring:
   application:
     name: md-ticket
   datasource:
-    url: jdbc:mysql://192.168.1.7:3309/md-ticket
+    url: jdbc:mysql://192.168.1.6:3309/md_ticket
     username: root
     password: lotus
     driver-class-name: com.mysql.jdbc.Driver

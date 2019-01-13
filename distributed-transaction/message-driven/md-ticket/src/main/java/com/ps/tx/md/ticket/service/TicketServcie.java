@@ -10,6 +10,9 @@ import org.springframework.jms.annotation.JmsListener;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.sql.SQLException;
+import java.util.concurrent.TimeUnit;
+
 @Service
 public class TicketServcie {
     private final Logger logger = LoggerFactory.getLogger(getClass());
@@ -21,10 +24,19 @@ public class TicketServcie {
 
     }
     @Transactional
-    public MdTicket ticketLock(OrderDTO orderDTO){
-        MdTicket ticket = this.ticketRepository.findByTicketNumber(orderDTO.getTicketNumber());
-        ticket.setLockUser(orderDTO.getCustomerId());
-        ticket = ticketRepository.save(ticket);
-        return ticket;
+    public Integer ticketLock(OrderDTO orderDTO){
+        int affectedRows = 0;
+        try{
+            affectedRows = this.ticketRepository.lockTicket(orderDTO.getCustomerId(),orderDTO.getTicketNumber());
+        } catch (Exception e){
+            logger.error(e.getLocalizedMessage());
+        }
+        logger.info("Try to lock ticket with result:{}",affectedRows);
+        try {
+            TimeUnit.SECONDS.sleep(10L);
+        } catch (InterruptedException e) {
+            logger.error(e.getMessage());
+        }
+        return affectedRows;
     }
 }

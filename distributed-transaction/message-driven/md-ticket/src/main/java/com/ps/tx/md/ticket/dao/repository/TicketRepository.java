@@ -13,7 +13,7 @@ public class TicketRepository {
         this.ticketMapper.updateByPrimaryKeySelective(ticket);
         return ticket;
     }
-    public MdTicket findByTicketNumber(Long ticketNumber){
-        return null;//this.ticketMapper.selectByMdTicketNumber(ticketNumber);
+    public int lockTicket(Long customerId, Long ticketNumber){
+        return this.ticketMapper.updateByTicketNumber4LockTicket(customerId,ticketNumber);
     }
 }
