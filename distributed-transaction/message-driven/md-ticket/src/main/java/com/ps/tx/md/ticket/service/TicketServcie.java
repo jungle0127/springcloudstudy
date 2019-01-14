@@ -7,6 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jms.annotation.JmsListener;
+import org.springframework.jms.core.JmsTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -18,9 +19,25 @@ public class TicketServcie {
     private final Logger logger = LoggerFactory.getLogger(getClass());
     @Autowired
     private TicketRepository ticketRepository;
+    @Autowired
+    private JmsTemplate jmsTemplate;
+
+    @Transactional
     @JmsListener(destination = "order:new",containerFactory = "jmsListenerContainerFactory")
-    public void handleTicketLock(MdTicket ticket){
+    public void handleTicketLock(OrderDTO dto){
         logger.info("Got new order for tikcket lock.");
+        int lockCount = this.ticketRepository.lockTicket(dto.getCustomerId(),dto.getTicketNumber());
+        if(lockCount == 1){
+            logger.info("Lock ticket succeed.");
+            dto.setStatus("TICKET_LOCKED");
+            this.jmsTemplate.convertAndSend("order:locked",dto);// 触发创建订单的操作
+        }
+        else{
+            logger.warn("Lock ticket failed.");
+            dto.setStatus("TICKET_LOCK_FAILED.");
+            //TODO: need more process
+        }
+
 
     }
     @Transactional

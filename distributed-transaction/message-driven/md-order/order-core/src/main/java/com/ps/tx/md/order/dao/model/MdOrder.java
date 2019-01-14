@@ -1,5 +1,7 @@
 package com.ps.tx.md.order.dao.model;
 
+import java.time.ZonedDateTime;
+
 public class MdOrder {
     private Long id;
 
@@ -16,6 +18,16 @@ public class MdOrder {
     private String status;
 
     private String reason;
+
+    private ZonedDateTime createDate;
+
+    public ZonedDateTime getCreateDate() {
+        return createDate;
+    }
+
+    public void setCreateDate(ZonedDateTime createDate) {
+        this.createDate = createDate;
+    }
 
     public Long getId() {
         return id;
@@ -79,5 +91,20 @@ public class MdOrder {
 
     public void setReason(String reason) {
         this.reason = reason == null ? null : reason.trim();
+    }
+
+    @Override
+    public String toString() {
+        return "MdOrder{" +
+                "id=" + id +
+                ", uuid='" + uuid + '\'' +
+                ", customerId=" + customerId +
+                ", title='" + title + '\'' +
+                ", ticketNumber=" + ticketNumber +
+                ", amount=" + amount +
+                ", status='" + status + '\'' +
+                ", reason='" + reason + '\'' +
+                ", createDate=" + createDate +
+                '}';
     }
 }

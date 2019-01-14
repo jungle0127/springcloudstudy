@@ -19,7 +19,7 @@ import javax.jms.ConnectionFactory;
 public class JmsConfig {
     @Bean
     public ConnectionFactory connectionFactory(){
-        ConnectionFactory connectionFactory = new ActiveMQConnectionFactory("tcp://192.168.1.7:61616");
+        ConnectionFactory connectionFactory = new ActiveMQConnectionFactory("tcp://192.168.1.6:61616");
         TransactionAwareConnectionFactoryProxy transactionAwareConnectionFactoryProxy = new TransactionAwareConnectionFactoryProxy();
         transactionAwareConnectionFactoryProxy.setTargetConnectionFactory(connectionFactory);
         transactionAwareConnectionFactoryProxy.setSynchedLocalTransactionAllowed(true);
