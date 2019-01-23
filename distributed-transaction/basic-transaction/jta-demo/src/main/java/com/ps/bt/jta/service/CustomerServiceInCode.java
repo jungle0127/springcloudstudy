@@ -1,7 +1,7 @@
-package com.ps.tx.jta.service;
+package com.ps.bt.jta.service;
 
-import com.ps.tx.jta.dao.CustomerRepository;
-import com.ps.tx.jta.domain.Customer;
+import com.ps.bt.jta.dao.CustomerRepository;
+import com.ps.bt.jta.domain.Customer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

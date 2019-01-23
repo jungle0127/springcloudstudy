@@ -1,4 +1,4 @@
-package com.ps.tx.jta.domain;
+package com.ps.bt.jta.domain;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
