@@ -13,13 +13,12 @@ import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.transaction.PlatformTransactionManager;
 
 import javax.sql.DataSource;
-import javax.xml.crypto.Data;
 
 @Configuration
 public class DBConfiguration {
     @Bean
     @Primary
-    @ConfigurationProperties(prefix = "spring.userDatasource")
+    @ConfigurationProperties(prefix = "spring.user-datasource")
     public DataSourceProperties userDataSourceProperties(){
         return new DataSourceProperties();
     }
@@ -43,7 +42,7 @@ public class DBConfiguration {
     }
 
     @Bean
-    @ConfigurationProperties(prefix = "spring.orderDatasource")
+    @ConfigurationProperties(prefix = "spring.order-datasource")
     public DataSourceProperties orderDataSourceProperties(){
         return new DataSourceProperties();
     }

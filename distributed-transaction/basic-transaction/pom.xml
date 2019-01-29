@@ -10,7 +10,9 @@
     <modelVersion>4.0.0</modelVersion>
     <packaging>pom</packaging>
     <modules>
-        <module>dt-tx-jta</module>
+        <module>bt-2db</module>
+        <module>bt-jta</module>
+        <module>jta-demo</module>
     </modules>
     <artifactId>basic-transaction</artifactId>
 

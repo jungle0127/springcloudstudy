@@ -41,7 +41,7 @@ public class TicketServcie {
 
     }
     @Transactional
-    public Integer ticketLock(OrderDTO orderDTO){
+    public Integer  ticketLock(OrderDTO orderDTO){
         int affectedRows = 0;
         try{
             affectedRows = this.ticketRepository.lockTicket(orderDTO.getCustomerId(),orderDTO.getTicketNumber());
