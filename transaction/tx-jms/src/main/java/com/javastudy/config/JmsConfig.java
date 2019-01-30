@@ -18,22 +18,24 @@ public class JmsConfig {
     @Bean
     public JmsListenerContainerFactory<?> jmsListenerContainerFactory(ConnectionFactory connectionFactory,
                                                                       DefaultJmsListenerContainerFactoryConfigurer containerFactoryConfigurer,
-                                                                      PlatformTransactionManager transactionManager){
+                                                                      PlatformTransactionManager transactionManager) {
         DefaultJmsListenerContainerFactory jmsListenerContainerFactory = new DefaultJmsListenerContainerFactory();
         jmsListenerContainerFactory.setTransactionManager(transactionManager);
         jmsListenerContainerFactory.setCacheLevelName("CACHE_CONNECTION");//处理事务结束时ConnectionFactory会被关闭
         jmsListenerContainerFactory.setReceiveTimeout(10000L);
-        containerFactoryConfigurer.configure(jmsListenerContainerFactory,connectionFactory);
+        containerFactoryConfigurer.configure(jmsListenerContainerFactory, connectionFactory);
         return jmsListenerContainerFactory;
     }
+
     @Bean
-    public JmsTemplate jmsTemplate(ConnectionFactory connectionFactory){
+    public JmsTemplate jmsTemplate(ConnectionFactory connectionFactory) {
         JmsTemplate jmsTemplate = new JmsTemplate();
         jmsTemplate.setConnectionFactory(connectionFactory);
         return jmsTemplate;
     }
+
     @Bean
-    public PlatformTransactionManager platformTransactionManager(ConnectionFactory connectionFactory){
+    public PlatformTransactionManager platformTransactionManager(ConnectionFactory connectionFactory) {
         return new JmsTransactionManager(connectionFactory);
 
     }

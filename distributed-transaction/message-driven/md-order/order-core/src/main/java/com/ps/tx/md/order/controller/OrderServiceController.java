@@ -21,19 +21,23 @@ public class OrderServiceController implements IOrderService {
     private JmsTemplate jmsTemplate;
 
     private TimeBasedGenerator uuidGenerator = Generators.timeBasedGenerator();
+
     /**
      * 将新订单发送到order:new队列，由ticketservice响应
+     *
      * @param dto
      */
     @PostMapping("")
-    public void  createOrder(@RequestBody OrderDTO dto){
+    public void createOrder(@RequestBody OrderDTO dto) {
         dto.setUuid(this.uuidGenerator.generate().toString());
-        this.jmsTemplate.convertAndSend("order:new",dto);
+        this.jmsTemplate.convertAndSend("order:new", dto);
     }
+
     @GetMapping("")
-    public List<MdOrder> getAllOrders(){
+    public List<MdOrder> getAllOrders() {
         return this.orderRepository.findAll();
     }
+
     @GetMapping("/{id}")
     public OrderDTO getOrderProxy(@PathVariable Long id) {
         MdOrder order = this.orderRepository.selectById(id);

@@ -19,30 +19,33 @@ public class CustomerController {
     private CustomerRepository customerRepository;
     @Autowired
     private OrderClient orderClient;
+
     @PostMapping
-    public void init(){
+    public void init() {
         MdCustomer customer = new MdCustomer();
         customer.setUsername("ps");
         customer.setPassword("111111");
         customer.setRole("User");
         this.customerRepository.save(customer);
     }
+
     @PostMapping("")
-    public MdCustomer createCustomer(@RequestBody MdCustomer customer){
+    public MdCustomer createCustomer(@RequestBody MdCustomer customer) {
         return this.customerRepository.save(customer);
     }
+
     @GetMapping("")
     @HystrixCommand
-    public List<MdCustomer> getAllCustomers(){
+    public List<MdCustomer> getAllCustomers() {
         return this.customerRepository.findAll();
     }
 
     @GetMapping("/me")
     @HystrixCommand
-    public Map getMyInfo(){
+    public Map getMyInfo() {
         MdCustomer customer = this.customerRepository.findByUsername("ps");
         OrderDTO orderDTO = this.orderClient.getOrderProxy(1L);
-        Map<String,Object> resultMap = new HashMap<String, Object>();
+        Map<String, Object> resultMap = new HashMap<String, Object>();
         resultMap.put("customer", customer);
         resultMap.put("order", orderDTO);
         return resultMap;

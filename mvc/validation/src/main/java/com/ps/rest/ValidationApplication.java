@@ -8,6 +8,6 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableSwagger2
 public class ValidationApplication {
     public static void main(String[] args) {
-        SpringApplication.run(ValidationApplication.class,args);
+        SpringApplication.run(ValidationApplication.class, args);
     }
 }

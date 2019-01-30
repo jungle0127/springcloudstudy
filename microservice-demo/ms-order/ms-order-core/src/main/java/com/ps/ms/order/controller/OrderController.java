@@ -24,8 +24,9 @@ public class OrderController implements IOrderService {
     public List<Order> getAll() {
         return orderRepository.findAll();
     }
+
     @GetMapping("/{id}")
-    public OrderDTO getOrderProxy(@PathVariable Long id){
+    public OrderDTO getOrderProxy(@PathVariable Long id) {
         Order order = this.orderRepository.findById(id);
         OrderDTO dto = new OrderDTO();
         dto.setAmount(order.getAmount());

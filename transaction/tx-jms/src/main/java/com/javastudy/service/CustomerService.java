@@ -19,36 +19,37 @@ public class CustomerService {
     private JmsTemplate jmsTemplate;
     @Autowired
     private PlatformTransactionManager transactionManager;
+
     @Transactional
-    @JmsListener(destination = "customer:msg:new",containerFactory = "jmsListenerContainerFactory")
-    public void handleMsg(String msg){
-        logger.info("get message:{}",msg);
+    @JmsListener(destination = "customer:msg:new", containerFactory = "jmsListenerContainerFactory")
+    public void handleMsg(String msg) {
+        logger.info("get message:{}", msg);
         String reply = "reply-" + msg;
-        this.jmsTemplate.convertAndSend("customer:msg:reply",reply);
-        if(msg.contains("error")){
+        this.jmsTemplate.convertAndSend("customer:msg:reply", reply);
+        if (msg.contains("error")) {
             this.simulateException();
         }
     }
-    @JmsListener(destination = "customer:msgcode:new",containerFactory = "jmsListenerContainerFactory")
-    public void handleInCode(String msg){
+
+    @JmsListener(destination = "customer:msgcode:new", containerFactory = "jmsListenerContainerFactory")
+    public void handleInCode(String msg) {
         TransactionDefinition transactionDefinition = new DefaultTransactionDefinition();
         TransactionStatus transactionStatus = this.transactionManager.getTransaction(transactionDefinition);
-        try{
+        try {
             String reply = "reply-code-" + msg;
-            this.jmsTemplate.convertAndSend("customer:msg:reply",reply);
-            if(msg.contains("error")){
+            this.jmsTemplate.convertAndSend("customer:msg:reply", reply);
+            if (msg.contains("error")) {
                 transactionManager.rollback(transactionStatus);
-            }
-            else {
+            } else {
                 transactionManager.commit(transactionStatus);
             }
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             transactionManager.rollback(transactionStatus);
             throw e;
         }
     }
-    private void simulateException(){
+
+    private void simulateException() {
         throw new RuntimeException("pseudo exception.");
     }
 }

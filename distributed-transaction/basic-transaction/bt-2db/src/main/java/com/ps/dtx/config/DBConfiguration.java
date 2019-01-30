@@ -19,39 +19,44 @@ public class DBConfiguration {
     @Bean
     @Primary
     @ConfigurationProperties(prefix = "spring.user-datasource")
-    public DataSourceProperties userDataSourceProperties(){
+    public DataSourceProperties userDataSourceProperties() {
         return new DataSourceProperties();
     }
+
     @Bean
     @Primary
-    public DataSource userDataSource(){
+    public DataSource userDataSource() {
         return userDataSourceProperties().initializeDataSourceBuilder().type(HikariDataSource.class).build();
     }
+
     @Bean
-    public JdbcTemplate userJdbcTemplate(@Qualifier("userDataSource") DataSource userDataSource){
+    public JdbcTemplate userJdbcTemplate(@Qualifier("userDataSource") DataSource userDataSource) {
         return new JdbcTemplate(userDataSource);
     }
+
     @Bean
-    public PlatformTransactionManager transactionManager(){
+    public PlatformTransactionManager transactionManager() {
         DataSourceTransactionManager userTM = new DataSourceTransactionManager(userDataSource());
         // userDataSource(), AOP的方式从容器中获取，非简单的方法调用
         // userTM.setDataSource(userDataSource()); 这个不是从容器中获取
         DataSourceTransactionManager orderTM = new DataSourceTransactionManager(orderDataSource());
-        ChainedTransactionManager chainedTransactionManager = new ChainedTransactionManager(userTM,orderTM);
+        ChainedTransactionManager chainedTransactionManager = new ChainedTransactionManager(userTM, orderTM);
         return chainedTransactionManager;
     }
 
     @Bean
     @ConfigurationProperties(prefix = "spring.order-datasource")
-    public DataSourceProperties orderDataSourceProperties(){
+    public DataSourceProperties orderDataSourceProperties() {
         return new DataSourceProperties();
     }
+
     @Bean
-    public DataSource orderDataSource(){
+    public DataSource orderDataSource() {
         return orderDataSourceProperties().initializeDataSourceBuilder().type(HikariDataSource.class).build();
     }
+
     @Bean
-    public JdbcTemplate orderJdbcTemplate(@Qualifier("orderDataSource") DataSource orderDataSource){
+    public JdbcTemplate orderJdbcTemplate(@Qualifier("orderDataSource") DataSource orderDataSource) {
         return new JdbcTemplate(orderDataSource);
     }
 }

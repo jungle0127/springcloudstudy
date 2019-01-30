@@ -8,6 +8,6 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableSwagger2
 public class SpringDTXApplication {
     public static void main(String[] args) {
-        SpringApplication.run(SpringDTXApplication.class,args);
+        SpringApplication.run(SpringDTXApplication.class, args);
     }
 }

@@ -12,16 +12,16 @@ public class OrderRepository {
     @Autowired
     private OrderMapper orderMapper;
 
-    public Order save(Order order){
+    public Order save(Order order) {
         this.orderMapper.insert(order);
         return order;
     }
 
-    public List<Order> findAll(){
+    public List<Order> findAll() {
         return this.orderMapper.selectAll();
     }
 
-    public Order findById(Long id){
+    public Order findById(Long id) {
         return this.orderMapper.selectByPrimaryKey(id);
     }
 }

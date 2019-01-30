@@ -6,14 +6,16 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class TicketRepositoryTest {
     @Autowired
     private TicketRepository ticketRepository;
+
     @Test
     public void lockTicket() {
-       int result = this.ticketRepository.lockTicket(1L,12345L);
+        int result = this.ticketRepository.lockTicket(1L, 12345L);
         Assert.assertTrue(result == 1);
     }
 }

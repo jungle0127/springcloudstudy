@@ -16,6 +16,6 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableFeignClients
 public class MSUserApplication {
     public static void main(String[] args) {
-        SpringApplication.run(MSUserApplication.class,args);
+        SpringApplication.run(MSUserApplication.class, args);
     }
 }

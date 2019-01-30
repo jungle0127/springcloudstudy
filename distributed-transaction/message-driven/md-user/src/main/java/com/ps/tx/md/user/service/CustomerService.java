@@ -17,9 +17,10 @@ public class CustomerService {
     private JmsTemplate jmsTemplate;
     @Autowired
     private CustomerRepository customerRepository;
+
     @Transactional
     @JmsListener(destination = "order:pay", containerFactory = "msgFactory")
-    public void handleOrderPay(OrderDTO dto){
+    public void handleOrderPay(OrderDTO dto) {
 
     }
 }

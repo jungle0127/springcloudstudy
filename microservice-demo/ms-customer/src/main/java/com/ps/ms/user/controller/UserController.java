@@ -19,23 +19,25 @@ public class UserController {
     private UserRepository userRepository;
     @Autowired
     private OrderClient orderClient;
+
     @PostMapping("")
     public Customer create(@RequestBody Customer customer) {
         return userRepository.save(customer);
     }
+
     @GetMapping("")
     @HystrixCommand
-    public List<Customer> getAll(){
+    public List<Customer> getAll() {
         return this.userRepository.findAll();
     }
 
     @GetMapping("/me")
     @HystrixCommand
-    public Map getInfo(){
+    public Map getInfo() {
         Customer customer = this.userRepository.findOneByName("ps");
         OrderDTO order = this.orderClient.getOrderProxy(1L);
         Map result = new HashMap();
-        result.put("customer",customer);
+        result.put("customer", customer);
         result.put("order", order);
         return result;
     }

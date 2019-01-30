@@ -6,7 +6,7 @@ import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
-@FeignClient(value = "ms-order",path = "/api/v1/order")
+@FeignClient(value = "ms-order", path = "/api/v1/order")
 public interface OrderClient extends IOrderService {
     @GetMapping("/{id}")
     OrderDTO getOrderProxy(@PathVariable(name = "id") Long id);

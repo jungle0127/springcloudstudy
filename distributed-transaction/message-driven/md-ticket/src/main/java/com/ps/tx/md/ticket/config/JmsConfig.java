@@ -21,7 +21,7 @@ import javax.jms.ConnectionFactory;
 @Configuration
 public class JmsConfig {
     @Bean
-    public ConnectionFactory connectionFactory(){
+    public ConnectionFactory connectionFactory() {
         ConnectionFactory connectionFactory = new ActiveMQConnectionFactory("tcp://192.168.1.7:61616");
         TransactionAwareConnectionFactoryProxy transactionAwareConnectionFactoryProxy = new TransactionAwareConnectionFactoryProxy();
         transactionAwareConnectionFactoryProxy.setTargetConnectionFactory(connectionFactory);
@@ -29,30 +29,33 @@ public class JmsConfig {
         // 做事务同步
         return transactionAwareConnectionFactoryProxy;
     }
+
     @Bean
-    public JmsTemplate jmsTemplate(ConnectionFactory connectionFactory, MessageConverter jacksonJmsMessageConverter){
+    public JmsTemplate jmsTemplate(ConnectionFactory connectionFactory, MessageConverter jacksonJmsMessageConverter) {
         JmsTemplate jmsTemplate = new JmsTemplate(connectionFactory);
         jmsTemplate.setMessageConverter(jacksonJmsMessageConverter);
         jmsTemplate.setSessionTransacted(true);
         return jmsTemplate;
     }
+
     @Bean
     public JmsListenerContainerFactory<?> jmsListenerContainerFactory(ConnectionFactory connectionFactory,
                                                                       PlatformTransactionManager transactionManager,
-                                                                      DefaultJmsListenerContainerFactoryConfigurer jmsListenerContainerFactoryConfigurer){
+                                                                      DefaultJmsListenerContainerFactoryConfigurer jmsListenerContainerFactoryConfigurer) {
         DefaultJmsListenerContainerFactory factory = new DefaultJmsListenerContainerFactory();
-        jmsListenerContainerFactoryConfigurer.configure(factory,connectionFactory);
+        jmsListenerContainerFactoryConfigurer.configure(factory, connectionFactory);
         factory.setReceiveTimeout(10000L);
 //        factory.setCacheLevelName("CACHE_CONNECTION"); 独立的服务器不需要此行配置
         factory.setTransactionManager(transactionManager);
         factory.setConcurrency("10");
         return factory;
     }
+
     @Bean
     /**
      * 转换Java对象到JSON数据
      */
-    public MessageConverter jacksonJmsMessageConverter(){
+    public MessageConverter jacksonJmsMessageConverter() {
         MappingJackson2MessageConverter messageConverter = new MappingJackson2MessageConverter();
         messageConverter.setTargetType(MessageType.TEXT);
         messageConverter.setTypeIdPropertyName("_type");

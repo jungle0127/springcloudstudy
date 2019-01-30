@@ -13,9 +13,9 @@ public class ProducerServcie {
     @Autowired
     private JmsMessagingTemplate jmsMessagingTemplate;
 
-    public void sendMsg(String destinationName, String message){
+    public void sendMsg(String destinationName, String message) {
         System.out.println("========>>>> Send queue message " + message);
         Destination destination = new ActiveMQQueue(destinationName);
-        this.jmsMessagingTemplate.convertAndSend(destination,message);
+        this.jmsMessagingTemplate.convertAndSend(destination, message);
     }
 }

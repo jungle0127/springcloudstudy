@@ -10,6 +10,6 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 @MapperScan("com.ps.tx.md.order.dao.mapper")
 public class OrderBootApplication {
     public static void main(String[] args) {
-        SpringApplication.run(OrderBootApplication.class,args);
+        SpringApplication.run(OrderBootApplication.class, args);
     }
 }

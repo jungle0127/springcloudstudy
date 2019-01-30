@@ -10,6 +10,6 @@ import org.springframework.cloud.netflix.hystrix.dashboard.EnableHystrixDashboar
 @EnableHystrixDashboard
 public class RegistryCenterApplication {
     public static void main(String[] args) {
-        SpringApplication.run(RegistryCenterApplication.class,args);
+        SpringApplication.run(RegistryCenterApplication.class, args);
     }
 }

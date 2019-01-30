@@ -9,6 +9,6 @@ public class TopicConsumerApplication {
         Thread thread = new Thread();
         thread.setDaemon(true);
         thread.start();
-        SpringApplication.run(TopicConsumerApplication.class,args);
+        SpringApplication.run(TopicConsumerApplication.class, args);
     }
 }

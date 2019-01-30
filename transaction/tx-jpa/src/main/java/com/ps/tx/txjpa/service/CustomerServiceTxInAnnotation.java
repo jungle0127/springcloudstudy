@@ -14,9 +14,10 @@ public class CustomerServiceTxInAnnotation {
     private final Logger logger = LoggerFactory.getLogger(getClass());
     @Autowired
     private CustomerRepository customerRepository;
+
     @Transactional
-    public Customer create(Customer customer){
-        if(customer.getId() != null){
+    public Customer create(Customer customer) {
+        if (customer.getId() != null) {
             throw new RuntimeException("user not exists.");
         }
         customer.setUsername("Annotation:" + customer.getUsername());

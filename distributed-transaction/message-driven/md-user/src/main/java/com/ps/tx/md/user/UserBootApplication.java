@@ -14,6 +14,6 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 @MapperScan("com.ps.tx.md.user.dao.mapper")
 public class UserBootApplication {
     public static void main(String[] args) {
-        SpringApplication.run(UserBootApplication.class,args);
+        SpringApplication.run(UserBootApplication.class, args);
     }
 }

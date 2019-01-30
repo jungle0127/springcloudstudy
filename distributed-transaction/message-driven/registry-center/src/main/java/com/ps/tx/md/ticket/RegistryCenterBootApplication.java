@@ -10,6 +10,6 @@ import org.springframework.cloud.netflix.hystrix.dashboard.EnableHystrixDashboar
 @EnableEurekaServer
 public class RegistryCenterBootApplication {
     public static void main(String[] args) {
-        SpringApplication.run(RegistryCenterBootApplication.class,args);
+        SpringApplication.run(RegistryCenterBootApplication.class, args);
     }
 }

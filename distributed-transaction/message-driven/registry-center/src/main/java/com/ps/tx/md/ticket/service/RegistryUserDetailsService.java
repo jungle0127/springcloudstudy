@@ -13,7 +13,8 @@ import org.springframework.stereotype.Service;
 public class RegistryUserDetailsService implements UserDetailsService {
     @Autowired
     private PasswordEncoder passwordEncoder;
+
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return new User(username,this.passwordEncoder.encode("lotus"), AuthorityUtils.commaSeparatedStringToAuthorityList("admin,ROLE_user"));
+        return new User(username, this.passwordEncoder.encode("lotus"), AuthorityUtils.commaSeparatedStringToAuthorityList("admin,ROLE_user"));
     }
 }

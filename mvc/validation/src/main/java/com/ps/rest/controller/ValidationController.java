@@ -12,7 +12,7 @@ import javax.validation.Valid;
 @RequestMapping("/api/v1/validate")
 public class ValidationController {
     @PostMapping("")
-    public String check(@Valid @RequestBody PersonDto dto){
+    public String check(@Valid @RequestBody PersonDto dto) {
         return "OK";
     }
 }

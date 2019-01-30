@@ -9,6 +9,6 @@ public class ActiveMQConsumerApplication {
         Thread thread = new Thread();
         thread.setDaemon(true);
         thread.start();
-        SpringApplication.run(ActiveMQConsumerApplication.class,args);
+        SpringApplication.run(ActiveMQConsumerApplication.class, args);
     }
 }

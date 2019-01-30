@@ -18,12 +18,14 @@ public class CustomerController {
     private CustomerServiceInCode customerServiceInCode;
     @Autowired
     private CustomerRepository customerRepository;
+
     @PostMapping("/code")
     public Customer createCustomer(@RequestBody Customer customer) throws Exception {
         return this.customerServiceInCode.createCustomer(customer);
     }
+
     @GetMapping("/customers")
-    public List<Customer> getAllCustomers(){
+    public List<Customer> getAllCustomers() {
         return this.customerRepository.findAll();
     }
 

@@ -5,8 +5,8 @@ spring:
     name: ms-proxy
 eureka:
   client:
-#    register-with-eureka: true
-#    fetch-register: true
+    #    register-with-eureka: true
+    #    fetch-register: true
     serviceUrl:
       defaultZone: http://ps:lotus@localhost:8761/eureka
 zuul:

@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>tx-jta</artifactId>
+    <artifactId>spring-tx-jta</artifactId>
 
     <name>tx-jta</name>
 

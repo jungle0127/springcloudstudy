@@ -12,6 +12,6 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableEurekaClient
 public class TicketBootApplication {
     public static void main(String[] args) {
-        SpringApplication.run(TicketBootApplication.class,args);
+        SpringApplication.run(TicketBootApplication.class, args);
     }
 }

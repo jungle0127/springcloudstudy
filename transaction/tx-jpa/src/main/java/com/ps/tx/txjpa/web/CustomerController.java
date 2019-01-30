@@ -1,6 +1,5 @@
 package com.ps.tx.txjpa.web;
 
-import ch.qos.logback.classic.net.server.HardenedLoggingEventInputStream;
 import com.ps.tx.txjpa.dao.CustomerRepository;
 import com.ps.tx.txjpa.domain.Customer;
 import com.ps.tx.txjpa.service.CustomerServiceTxInAnnotation;
@@ -22,16 +21,19 @@ public class CustomerController {
     private CustomerServiceTxInCode customerServiceTxInCode;
     @Autowired
     private CustomerRepository customerRepository;
+
     @PostMapping("/annotation")
-    public Customer createInAnnotation(@RequestBody Customer customer){
+    public Customer createInAnnotation(@RequestBody Customer customer) {
         return this.customerServiceTxInAnnotation.create(customer);
     }
+
     @PostMapping("/code")
-    public Customer createInCode(@RequestBody Customer customer){
+    public Customer createInCode(@RequestBody Customer customer) {
         return this.customerServiceTxInCode.create(customer);
     }
+
     @GetMapping("/customers")
-    public List<Customer> getAll(){
+    public List<Customer> getAll() {
         return customerRepository.findAll();
     }
 }

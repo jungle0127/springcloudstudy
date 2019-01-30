@@ -11,8 +11,8 @@ public class SendMessageRunner implements CommandLineRunner {
     private PublisherService publisherService;
 
     public void run(String... args) throws Exception {
-        for(int index = 0;index< 10;index++){
-            this.publisherService.sendMsg("ps.test.topic",String.format("Send topic message with NO.%s",index));
+        for (int index = 0; index < 10; index++) {
+            this.publisherService.sendMsg("ps.test.topic", String.format("Send topic message with NO.%s", index));
         }
     }
 }

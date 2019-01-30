@@ -19,8 +19,8 @@ public class CustomerServiceTxInCode {
     @Autowired
     private PlatformTransactionManager platformTransactionManager;
 
-    public Customer create(Customer customer){
-        if(customer.getId() != null){
+    public Customer create(Customer customer) {
+        if (customer.getId() != null) {
             throw new RuntimeException("user exists.");
         }
         DefaultTransactionDefinition defaultTransactionDefinition = new DefaultTransactionDefinition();
@@ -33,7 +33,7 @@ public class CustomerServiceTxInCode {
             customerRepository.save(customer);
             platformTransactionManager.commit(transactionStatus);
             return customer;
-        } catch (Exception e){
+        } catch (Exception e) {
             platformTransactionManager.rollback(transactionStatus);
             logger.error(e.getLocalizedMessage());
             throw e;

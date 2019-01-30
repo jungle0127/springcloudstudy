@@ -11,16 +11,18 @@ import org.springframework.test.context.junit4.SpringRunner;
 import java.util.List;
 
 import static org.junit.Assert.*;
+
 @SpringBootTest
 @RunWith(SpringRunner.class)
 public class OrderRepositoryTest {
     @Autowired
     private OrderRepository orderRepository;
+
     @Test
     public void findByCustomerId() {
         List<MdOrder> orderList = this.orderRepository.findByCustomerId(123L);
         Assert.assertTrue(orderList.size() == 2);
-        for(MdOrder order: orderList){
+        for (MdOrder order : orderList) {
             System.out.println(order.getUuid());
         }
     }

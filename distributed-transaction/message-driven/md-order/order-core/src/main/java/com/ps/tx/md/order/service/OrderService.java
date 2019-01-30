@@ -21,25 +21,25 @@ public class OrderService {
 
     @Transactional
     @JmsListener(destination = "order:locked", containerFactory = "msgFactory")
-    public void handleNewOrder(OrderDTO dto){
+    public void handleNewOrder(OrderDTO dto) {
         logger.info("Got new order to create {}", dto.toString());
-        if(this.orderRepository.findOneByUuid(dto.getUuid()) != null){
+        if (this.orderRepository.findOneByUuid(dto.getUuid()) != null) {
             logger.warn("order has been processed.");
-        }
-        else{
+        } else {
             MdOrder mdOrder = this.transform(dto);
             this.orderRepository.addOrder(mdOrder);
         }
         dto.setStatus("NEW");
-        this.jmsTemplate.convertAndSend("order:pay",dto);
+        this.jmsTemplate.convertAndSend("order:pay", dto);
     }
-    private MdOrder transform(OrderDTO dto){
+
+    private MdOrder transform(OrderDTO dto) {
         MdOrder mdOrder = new MdOrder();
         mdOrder.setUuid(dto.getUuid());
         mdOrder.setAmount(dto.getAmount());
         mdOrder.setTitle(dto.getTitle());
         mdOrder.setCustomerId(dto.getCustomerId());
-        mdOrder.setTicketNumber( dto.getTicketNumber());
+        mdOrder.setTicketNumber(dto.getTicketNumber());
         mdOrder.setStatus("NEW");
         return mdOrder;
     }

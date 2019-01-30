@@ -12,14 +12,16 @@ public class CustomerRepository {
     @Autowired
     private MdCustomerMapper customerMapper;
 
-    public MdCustomer save(MdCustomer customer){
+    public MdCustomer save(MdCustomer customer) {
         this.customerMapper.insert(customer);
         return customer;
     }
-    public List<MdCustomer> findAll(){
+
+    public List<MdCustomer> findAll() {
         return this.customerMapper.selectAll();
     }
-    public MdCustomer findByUsername(String userName){
+
+    public MdCustomer findByUsername(String userName) {
         return this.customerMapper.selectByUsername(userName);
     }
 }

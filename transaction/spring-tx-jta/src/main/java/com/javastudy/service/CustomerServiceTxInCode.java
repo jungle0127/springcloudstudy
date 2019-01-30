@@ -22,8 +22,8 @@ public class CustomerServiceTxInCode {
     @Autowired
     private JmsTemplate jmsTemplate;
 
-    public Customer create(Customer customer){
-        if(customer.getId() != null){
+    public Customer create(Customer customer) {
+        if (customer.getId() != null) {
             throw new RuntimeException("user exists.");
         }
         DefaultTransactionDefinition defaultTransactionDefinition = new DefaultTransactionDefinition();
@@ -34,10 +34,10 @@ public class CustomerServiceTxInCode {
         try {
             customer.setUsername("code" + customer.getUsername());
             customerRepository.save(customer);
-            this.jmsTemplate.convertAndSend("customer:msg:reply",customer.getUsername());
+            this.jmsTemplate.convertAndSend("customer:msg:reply", customer.getUsername());
             platformTransactionManager.commit(transactionStatus);
             return customer;
-        } catch (Exception e){
+        } catch (Exception e) {
             platformTransactionManager.rollback(transactionStatus);
             logger.error(e.getLocalizedMessage());
             throw e;

@@ -11,9 +11,10 @@ import javax.jms.Destination;
 public class PublisherService {
     @Autowired
     private JmsMessagingTemplate jmsMessagingTemplate;
-    public void sendMsg(String destinationName, String message){
+
+    public void sendMsg(String destinationName, String message) {
         Destination destination = new ActiveMQTopic(destinationName);
 
-        this.jmsMessagingTemplate.convertAndSend(destinationName,message);
+        this.jmsMessagingTemplate.convertAndSend(destinationName, message);
     }
 }

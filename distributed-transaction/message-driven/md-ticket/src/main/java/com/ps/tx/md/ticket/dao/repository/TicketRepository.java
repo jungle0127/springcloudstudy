@@ -9,11 +9,13 @@ import org.springframework.stereotype.Repository;
 public class TicketRepository {
     @Autowired
     private MdTicketMapper ticketMapper;
-    public MdTicket save(MdTicket ticket){
+
+    public MdTicket save(MdTicket ticket) {
         this.ticketMapper.updateByPrimaryKeySelective(ticket);
         return ticket;
     }
-    public int lockTicket(Long customerId, Long ticketNumber){
-        return this.ticketMapper.updateByTicketNumber4LockTicket(customerId,ticketNumber);
+
+    public int lockTicket(Long customerId, Long ticketNumber) {
+        return this.ticketMapper.updateByTicketNumber4LockTicket(customerId, ticketNumber);
     }
 }
