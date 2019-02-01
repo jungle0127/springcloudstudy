@@ -14,6 +14,7 @@
         <module>infrastructure-demo</module>
         <module>microservice-demo</module>
         <module>mvc</module>
+        <module>cache-sync</module>
     </modules>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
