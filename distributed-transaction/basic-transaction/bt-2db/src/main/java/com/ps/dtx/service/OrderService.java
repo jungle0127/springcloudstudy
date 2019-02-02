@@ -1,6 +1,6 @@
-package com.ps.dtx.doubledb.ctxm.service;
+package com.ps.dtx.service;
 
-import com.ps.dtx.doubledb.ctxm.domain.Order;
+import com.ps.dtx.domain.Order;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

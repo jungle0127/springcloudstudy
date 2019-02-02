@@ -1,7 +1,7 @@
-package com.ps.dtx.doubledb.ctxm.runner;
+package com.ps.dtx.runner;
 
-import com.ps.dtx.doubledb.ctxm.domain.Order;
-import com.ps.dtx.doubledb.ctxm.service.OrderService;
+import com.ps.dtx.domain.Order;
+import com.ps.dtx.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
