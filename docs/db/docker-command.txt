@@ -1,0 +1,9 @@
+1. Create DB in docker
+    docker run --name psorderdb -e MYSQL_ROOT_PASSWORD=lotus -d -p 3307:3306 -v /data/var/mysql-psorder:/var/lib/mysql-psorder mysql:latest
+    docker run --name psstoragedb -e MYSQL_ROOT_PASSWORD=lotus -d -p 3308:3306 -v /data/var/mysql-psstorage:/var/lib/mysql-psstorage mysql:latest
+    docker run --name psaccountdb -e MYSQL_ROOT_PASSWORD=lotus -d -p 3309:3306 -v /data/var/mysql-psaccount:/var/lib/mysql-psaccount mysql:latest
+2. Create activemq in docker
+    docker run -d --name myactivemq -p 61617:61616 -p 8162:8161 docker.io/webcenter/activemq:latest
+    61616是activemq的容器使用端口（映射为61617），8161是web页面管理端口（对外映射为8162）.
+    默认账号密码都是admin
+    点击manage activemq broker就可以进入管理页面（需要输入账号密码）。

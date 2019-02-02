@@ -1,5 +1,5 @@
 DROP DATABASE IF EXISTS `ps_account`;
-CREATE DATABASE `t_account` DEFAULT CHARACTER SET utf8;
+CREATE DATABASE `ps_account` DEFAULT CHARACTER SET utf8;
 
 use ps_account;
 
