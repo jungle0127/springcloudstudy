@@ -1,13 +1,22 @@
-package com.ps.dtx.doubledb.ctxm.domain;
+package com.ps.dtx.besteffort.domain;
 
+import javax.persistence.*;
 import java.util.Date;
 
+@Entity(name = "t_order")
 public class Order {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column
     private Long customerId;
+    @Column
     private Long storageId;
+    @Column
     private Integer amount;
+    @Column
     private String orderDesc;
+    @Column
     private Date createTime;
 
     public Long getId() {
@@ -63,8 +72,8 @@ public class Order {
         return "Order{" +
                 "id=" + id +
                 ", customerId=" + customerId +
-                ", storeageId=" + storageId +
-                ", amount=" + amount +
+                ", storageId=" + storageId +
+                ", ammount=" + amount +
                 ", orderDesc='" + orderDesc + '\'' +
                 ", createTime=" + createTime +
                 '}';

@@ -14,7 +14,7 @@ public class CreateOrderRunner implements CommandLineRunner {
     public void run(String... args) throws Exception {
         Order order = new Order();
         order.setCustomerId(93511L);
-        order.setAmmount(10);
+        order.setAmount(10);
         order.setOrderDesc("pseudo order 1");
         order.setStorageId(1L);
         Boolean result = this.orderService.createOrder(order);

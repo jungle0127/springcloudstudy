@@ -18,25 +18,11 @@ import javax.sql.DataSource;
 public class DBConfiguration {
     @Primary
     @Bean
-    @ConfigurationProperties(prefix = "spring.storeage-datasource")
-    public DataSourceProperties storeageDataSourceProperties(){
-        return new DataSourceProperties();
-    }
-    @Bean
-    @Primary
-    public DataSource storeageDataSource(){
-        return storeageDataSourceProperties().initializeDataSourceBuilder().type(HikariDataSource.class).build();
-    }
-    @Bean
-    public JdbcTemplate storeageJdbcTemplate(@Qualifier("storeageDataSource") DataSource storeageDataSource){
-        return new JdbcTemplate(storeageDataSource);
-    }
-
-    @Bean
     @ConfigurationProperties(prefix = "spring.order-datasource")
     public DataSourceProperties orderDataSourceProperties(){
         return new DataSourceProperties();
     }
+    @Primary
     @Bean
     public DataSource orderDataSource(){
         return orderDataSourceProperties().initializeDataSourceBuilder().type(HikariDataSource.class).build();
@@ -45,6 +31,20 @@ public class DBConfiguration {
     public JdbcTemplate orderJdbcTemplate(@Qualifier("orderDataSource") DataSource orderDataSource){
         return new JdbcTemplate(orderDataSource);
     }
+    @Bean
+    @ConfigurationProperties(prefix = "spring.storeage-datasource")
+    public DataSourceProperties storeageDataSourceProperties(){
+        return new DataSourceProperties();
+    }
+    @Bean
+    public DataSource storeageDataSource(){
+        return storeageDataSourceProperties().initializeDataSourceBuilder().type(HikariDataSource.class).build();
+    }
+    @Bean
+    public JdbcTemplate storeageJdbcTemplate(@Qualifier("storeageDataSource") DataSource storeageDataSource){
+        return new JdbcTemplate(storeageDataSource);
+    }
+
     @Bean
     public PlatformTransactionManager platformTransactionManager(){
         DataSourceTransactionManager storageDataSoruceTransactionManager = new DataSourceTransactionManager(storeageDataSource());

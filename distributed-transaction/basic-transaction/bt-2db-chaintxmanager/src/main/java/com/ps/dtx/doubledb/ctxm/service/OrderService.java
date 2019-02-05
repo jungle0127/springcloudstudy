@@ -25,8 +25,8 @@ public class OrderService {
     @Transactional
     public Boolean createOrder(Order order){
         try{
-            int affectedOrderRows =  this.orderJdbcTemplate.update(CREATE_ORDER_SQL,order.getCustomerId(),order.getStorageId(), order.getAmmount(),order.getOrderDesc());
-            int affectedStoreageRows = this.storeageJdbcTemplate.update(UPDATE_STOREAGE_SQL, order.getAmmount(),order.getStorageId());
+            int affectedOrderRows =  this.orderJdbcTemplate.update(CREATE_ORDER_SQL,order.getCustomerId(),order.getStorageId(), order.getAmount(),order.getOrderDesc());
+            int affectedStoreageRows = this.storeageJdbcTemplate.update(UPDATE_STOREAGE_SQL, order.getAmount(),order.getStorageId());
             if(affectedOrderRows != 1 || affectedStoreageRows != 1){
                 return false;
             }
