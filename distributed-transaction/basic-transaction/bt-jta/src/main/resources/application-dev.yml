@@ -1,4 +1,10 @@
-server:
-  port: 8080
-  servlet:
-    context-path: /transaction
+spring:
+  application:
+    name: basic-transaction-jta
+  datasource:
+    url: jdbc:mysql://192.168.1.6:3309/ps_account
+    username: root
+    password: lotus
+    driver-class-name: com.mysql.jdbc.Driver
+  activemq:
+    broker-url: tcp://192.168.1.6:61616
