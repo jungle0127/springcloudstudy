@@ -1,0 +1,23 @@
+logging:
+  config: classpath:log/logback.cfg.xml
+spring:
+  application:
+    name: jpa-jta
+  storage-datasource:
+    url: jdbc:mysql://192.168.1.6:3308/ps_storage
+    username: root
+    password: lotus
+    driver-class-name: com.mysql.jdbc.Driver
+  order-datasource:
+    url: jdbc:mysql://192.168.1.6:3307/ps_order
+    username: root
+    password: lotus
+    driver-class-name: com.mysql.jdbc.Driver
+  xa:
+    minPoolSize: 5
+    maxPoolSize: 10
+    maxLifeTime: 3000
+    borrowConnectionTimeout: 3000
+    loginTimeout: 3000
+    maintainceInterval: 2000
+    maxIdleTime: 4000

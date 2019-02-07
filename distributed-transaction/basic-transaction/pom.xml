@@ -16,6 +16,8 @@
         <module>bt-2db-chaintxmanager</module>
         <module>bt-besteffort-jmsdb</module>
         <module>bt-2db-mybatis-jta</module>
+        <module>bt-2db-jpa-jta</module>
+        <module>doubledb-jpa-jta</module>
     </modules>
     <artifactId>basic-transaction</artifactId>
 
