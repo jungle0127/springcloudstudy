@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: bt-2db-jta
+  storage-datasource:
+    jdbc-url: jdbc:mysql://192.168.1.6:3308/ps_storage
+    username: root
+    password: lotus
+    driver-class-name: com.mysql.jdbc.Driver
+  order-datasource:
+    jdbc-url: jdbc:mysql://192.168.1.6:3307/ps_order
+    username: root
+    password: lotus
+    driver-class-name: com.mysql.jdbc.Driver
