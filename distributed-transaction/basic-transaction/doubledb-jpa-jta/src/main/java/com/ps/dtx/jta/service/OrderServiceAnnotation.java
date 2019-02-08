@@ -16,8 +16,8 @@ public class OrderServiceAnnotation {
     @Qualifier("orderJdbcTemplate")
     private JdbcTemplate orderJdbcTemplate;
     @Autowired
-    @Qualifier("storeageJdbcTemplate")
-    private JdbcTemplate storeageJdbcTemplate;
+    @Qualifier("storageJdbcTemplate")
+    private JdbcTemplate storageJdbcTemplate;
 
     private final String CREATE_ORDER_SQL = "INSERT INTO t_order(`customer_id`,`storage_id`,`amount`,`order_desc`) VALUES (?,?,?,?)";
     private final String UPDATE_STOREAGE_SQL = "UPDATE t_storage SET inventory = inventory - ?, update_time = now() WHERE id = ?";
@@ -26,10 +26,11 @@ public class OrderServiceAnnotation {
     public Boolean createOrder(Order order){
         try{
             int affectedOrderRows =  this.orderJdbcTemplate.update(CREATE_ORDER_SQL,order.getCustomerId(),order.getStorageId(), order.getAmmount(),order.getOrderDesc());
-            int affectedStoreageRows = this.storeageJdbcTemplate.update(UPDATE_STOREAGE_SQL, order.getAmmount(),order.getStorageId());
+            int affectedStoreageRows = this.storageJdbcTemplate.update(UPDATE_STOREAGE_SQL, order.getAmmount(),order.getStorageId());
             if(affectedOrderRows != 1 || affectedStoreageRows != 1){
                 return false;
             }
+//            throw new RuntimeException("pseudo exception");
         } catch (Exception e){
             logger.error("create order failed with exception: {}",e.getMessage());
             throw e;
