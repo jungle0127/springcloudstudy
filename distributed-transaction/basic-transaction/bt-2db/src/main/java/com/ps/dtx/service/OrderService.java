@@ -30,6 +30,10 @@ public class OrderService {
             if(affectedOrderRows != 1 || affectedStoreageRows != 1){
                 return false;
             }
+            if(affectedOrderRows == 1){
+                throw new RuntimeException("pseudo exception.");
+            }
+
         } catch (Exception e){
             logger.error("create order failed with exception: {}",e.getMessage());
             throw e;
