@@ -1,7 +1,6 @@
 package com.ps.dtx.jta.config;
 
 import com.mysql.jdbc.jdbc2.optional.MysqlXADataSource;
-import com.zaxxer.hikari.HikariDataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceProperties;
