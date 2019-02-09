@@ -1,8 +1,10 @@
+logging:
+  config: classpath:log/logback.cfg.xml
 spring:
   application:
-    name: fd-storage
+    name: fd-account
   datasource:
-    url: jdbc:mysql://192.168.1.6:3308/ps_storage
+    url: jdbc:mysql://192.168.1.6:3309/ps_account
     username: root
     password: lotus
     driver-class-name: com.mysql.jdbc.Driver
