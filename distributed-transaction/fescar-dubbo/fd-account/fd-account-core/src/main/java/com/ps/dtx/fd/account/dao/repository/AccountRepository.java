@@ -13,4 +13,8 @@ public class AccountRepository {
     public Integer addAccount(AccountTbl accountTbl){
         return this.accountTblMapper.insert(accountTbl);
     }
+
+    public Integer debitAccount(String userId,Integer money){
+        return this.accountTblMapper.updateAccount(userId,money);
+    }
 }

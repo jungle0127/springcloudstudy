@@ -8,3 +8,12 @@ spring:
     username: root
     password: lotus
     driver-class-name: com.mysql.jdbc.Driver
+dubbo:
+  application:
+    name: fd-account
+  protocol:
+    name: dubbo
+    port: 20882
+  server: true
+  registry:
+    address: zookeeper://192.168.1.6:2181

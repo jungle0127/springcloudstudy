@@ -1,14 +1,7 @@
 package com.ps.dtx.fd.account.dao.mapper;
 
 import com.ps.dtx.fd.account.dao.model.AccountTbl;
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.InsertProvider;
-import org.apache.ibatis.annotations.Result;
-import org.apache.ibatis.annotations.Results;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
-import org.apache.ibatis.annotations.UpdateProvider;
+import org.apache.ibatis.annotations.*;
 import org.apache.ibatis.type.JdbcType;
 
 public interface AccountTblMapper {
@@ -52,4 +45,10 @@ public interface AccountTblMapper {
         "where id = #{id,jdbcType=INTEGER}"
     })
     int updateByPrimaryKey(AccountTbl record);
+    @Update({
+        "update account_tbl",
+        "set money = money - #{money,jdbcType=INTEGER}",
+        "where user_id = #{userId,jdbcType=VARCHAR}"
+    })
+    int updateAccount(@Param("userId") String userId, @Param("money") Integer money);
 }

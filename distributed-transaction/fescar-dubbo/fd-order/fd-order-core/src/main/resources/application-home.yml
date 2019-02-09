@@ -1,3 +1,5 @@
+logging:
+  config: classpath:log/logback.cfg.xml
 spring:
   application:
     name: fd-order
@@ -6,3 +8,11 @@ spring:
     username: root
     password: lotus
     driver-class-name: com.mysql.cj.jdbc.Driver
+dubbo:
+  application:
+    name: fd-order
+  protocol:
+    name: dubbo
+    port: 20880
+  registry:
+    address: zookeeper://192.168.1.6:2181

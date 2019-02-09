@@ -21,4 +21,9 @@ public class AccountRepositoryTest {
         Integer affectedRows = this.accountRepository.addAccount(accountTbl);
         Assert.assertTrue(affectedRows == 1);
     }
+    @Test
+    public void testDebitAccount(){
+        Integer affectedRows = this.accountRepository.debitAccount("1",100);
+        Assert.assertTrue(affectedRows == 1);
+    }
 }
