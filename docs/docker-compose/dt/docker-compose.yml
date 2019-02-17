@@ -1,0 +1,29 @@
+version: '3'
+services:
+  nacos-standalone:
+    image: nacos/nacos-server:latest
+    restart: always
+    container_name: nacos-standalone
+    ports:
+      - '8848:8848'
+    environment:
+      mode: standalone
+  ps-zk:
+    image: zookeeper:latest
+    restart: always
+    container_name: ps-zk
+    ports:
+      - '2181:2181'
+  ps-redis:
+    image: redis:latest
+    restart: always
+    container_name: ps-redis
+    ports:
+      - '6379:6379'
+  ps-activemq:
+    image: webcenter/activemq:latest
+    restart: always
+    container_name: ps-activemq
+    ports:
+      - '61616:61616'
+      - '8161:8161'
