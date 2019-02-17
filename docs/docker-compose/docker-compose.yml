@@ -1,0 +1,39 @@
+version: '3'
+services:
+  psorder_db:
+    image: mysql:5.7
+    restart: always
+    container_name: psorderdb
+    environment:
+      MYSQL_ROOT_PASSWORD: lotus
+    volumes:
+      - /data/var/mysql-psorder:/var/lib/mysql-psorder
+      - ./mysql/script/ps-order.sql:/docker-entrypoint-initdb.d/ps-order.sql
+    ports:
+      - '3307:3306'
+  psstorage_db:
+    image: mysql:5.7
+    restart: always
+    container_name: psstoragedb
+    environment:
+      MYSQL_ROOT_PASSWORD: lotus
+    volumes:
+      - /data/var/mysql-psstorage:/var/lib/mysql-psstorage
+      - ./mysql/script/ps-storage.sql:/docker-entrypoint-initdb.d/ps-storage.sql
+    ports:
+      - '3308:3306'
+  psaccount_db:
+    image: mysql:5.7
+    restart: always
+    container_name: psaccountdb
+    environment:
+      MYSQL_ROOT_PASSWORD: lotus
+    volumes:
+      - /data/var/mysql-psaccount:/var/lib/mysql-psaccount
+      - ./mysql/script/ps-account.sql:/docker-entrypoint-initdb.d/ps-account.sql
+    ports:
+      - '3309:3306'
+volumes:
+  data:
+    driver: local
+
