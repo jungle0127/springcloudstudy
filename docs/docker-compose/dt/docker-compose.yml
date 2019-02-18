@@ -13,7 +13,9 @@ services:
     restart: always
     container_name: ps-zk
     ports:
-      - '2181:2181'
+      - '2181:2181' # client port
+      - '2888:2888' # follower port
+      - '3888:3888' # election port
   ps-redis:
     image: redis:latest
     restart: always
