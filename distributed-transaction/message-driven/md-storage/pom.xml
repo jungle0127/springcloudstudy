@@ -3,22 +3,18 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>distributed-transaction</artifactId>
+        <artifactId>message-driven</artifactId>
         <groupId>com.ps</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>md-storage</artifactId>
     <packaging>pom</packaging>
     <modules>
-        <module>md-order</module>
-        <module>md-user</module>
-        <module>md-ticket</module>
-        <module>registry-center</module>
-        <module>proxy-zuul</module>
-        <module>md-account</module>
-        <module>md-storage</module>
+        <module>md-storage-core</module>
+        <module>md-storage-model</module>
     </modules>
-    <artifactId>message-driven</artifactId>
 
 
 </project>
