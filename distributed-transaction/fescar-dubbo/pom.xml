@@ -45,6 +45,7 @@
                 <artifactId>fescar-all</artifactId>
                 <version>${fescar.version}</version>
                 <type>pom</type>
+                <scope>import</scope>
             </dependency>
 
         </dependencies>

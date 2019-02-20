@@ -1,6 +1,6 @@
 package com.ps.dtx.jta.config;
 
-import com.mysql.jdbc.jdbc2.optional.MysqlXADataSource;
+import com.mysql.cj.jdbc.MysqlXADataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceProperties;
@@ -28,7 +28,7 @@ public class DBConfiguration {
     }
 
     @Bean
-    public XADataSource orderXADataSource(){
+    public XADataSource orderXADataSource() throws SQLException {
         DataSourceProperties dataSourceProperties = orderDataSourceProperties();
         MysqlXADataSource xaDataSource = new MysqlXADataSource();
         xaDataSource.setUrl(dataSourceProperties.getUrl());
@@ -67,7 +67,7 @@ public class DBConfiguration {
     }
 
     @Bean
-    public XADataSource storageXADataSource(){
+    public XADataSource storageXADataSource() throws SQLException {
         DataSourceProperties dataSourceProperties = storageDataSourceProperties();
         MysqlXADataSource xaDataSource = new MysqlXADataSource();
         xaDataSource.setUrl(dataSourceProperties.getUrl());

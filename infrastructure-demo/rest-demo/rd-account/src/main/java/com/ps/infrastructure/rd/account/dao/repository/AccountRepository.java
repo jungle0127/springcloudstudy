@@ -1,7 +1,7 @@
 package com.ps.infrastructure.rd.account.dao.repository;
 
-import com.ps.dtx.fd.account.dao.mapper.AccountTblMapper;
-import com.ps.dtx.fd.account.dao.model.AccountTbl;
+import com.ps.infrastructure.rd.account.dao.mapper.AccountTblMapper;
+import com.ps.infrastructure.rd.account.dao.model.AccountTbl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
