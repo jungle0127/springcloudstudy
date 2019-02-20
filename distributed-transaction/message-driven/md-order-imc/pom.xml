@@ -9,11 +9,11 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>md-order</artifactId>
+    <artifactId>order</artifactId>
     <packaging>pom</packaging>
     <modules>
-        <module>md-order-core</module>
-        <module>md-order-model</module>
+        <module>order-model</module>
+        <module>order-core</module>
     </modules>
 
 

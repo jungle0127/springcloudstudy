@@ -17,4 +17,8 @@ public class AccountRepository {
     public Integer debitAccount(String userId,Integer money){
         return this.accountTblMapper.updateAccount(userId,money);
     }
+    public Integer getAccountDeposit(String userId){
+        AccountTbl accountTbl = this.accountTblMapper.selectMoneyByUserId(userId);
+        return accountTbl == null ? null : accountTbl.getMoney();
+    }
 }

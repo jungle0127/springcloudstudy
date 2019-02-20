@@ -35,6 +35,18 @@ public interface AccountTblMapper {
         @Result(column="money", property="money", jdbcType=JdbcType.INTEGER)
     })
     AccountTbl selectByPrimaryKey(Integer id);
+    @Select({
+            "select",
+            "id, user_id, money",
+            "from account_tbl",
+            "where user_id = #{userId,jdbcType=VARCHAR}"
+    })
+    @Results({
+            @Result(column="id", property="id", jdbcType= JdbcType.INTEGER, id=true),
+            @Result(column="user_id", property="userId", jdbcType=JdbcType.VARCHAR),
+            @Result(column="money", property="money", jdbcType=JdbcType.INTEGER)
+    })
+    AccountTbl selectMoneyByUserId(String userId);
 
     @UpdateProvider(type=AccountTblSqlProvider.class, method="updateByPrimaryKeySelective")
     int updateByPrimaryKeySelective(AccountTbl record);
