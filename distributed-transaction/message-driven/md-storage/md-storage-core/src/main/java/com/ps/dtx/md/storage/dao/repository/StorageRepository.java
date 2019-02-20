@@ -1,7 +1,7 @@
 package com.ps.dtx.md.storage.dao.repository;
 
-import com.ps.dtx.fd.storage.dao.mapper.StorageTblMapper;
-import com.ps.dtx.fd.storage.dao.model.StorageTbl;
+import com.ps.dtx.md.storage.dao.mapper.StorageTblMapper;
+import com.ps.dtx.md.storage.dao.model.StorageTbl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
