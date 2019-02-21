@@ -1,6 +1,8 @@
 package com.ps.dtx.md.facade.config;
 
+import com.ps.dtx.md.account.model.Account;
 import com.ps.dtx.md.order.model.Order;
+import com.ps.dtx.md.storage.model.Storage;
 import org.apache.activemq.ActiveMQConnectionFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.jms.DefaultJmsListenerContainerFactoryConfigurer;
@@ -63,7 +65,9 @@ public class JmsConfiguration {
         messageConverter.setTargetType(MessageType.TEXT);
         Map<String,Class<?>> typeIdMap = new HashMap<>();
         typeIdMap.put(Order.class.getName(), Order.class);
-        messageConverter.setTypeIdPropertyName(Order.class.getName());
+        typeIdMap.put(Account.class.getName(),Account.class);
+        typeIdMap.put(Storage.class.getName(),Storage.class);
+        messageConverter.setTypeIdMappings(typeIdMap);
         return messageConverter;
     }
 }

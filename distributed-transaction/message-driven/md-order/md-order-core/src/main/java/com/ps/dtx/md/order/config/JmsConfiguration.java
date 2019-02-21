@@ -1,5 +1,8 @@
 package com.ps.dtx.md.order.config;
 
+import com.ps.dtx.md.account.model.Account;
+import com.ps.dtx.md.order.model.Order;
+import com.sun.javafx.collections.MappingChange;
 import org.apache.activemq.ActiveMQConnectionFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.jms.DefaultJmsListenerContainerFactoryConfigurer;
@@ -15,6 +18,8 @@ import org.springframework.jms.support.converter.MessageType;
 import org.springframework.transaction.PlatformTransactionManager;
 
 import javax.jms.ConnectionFactory;
+import java.util.HashMap;
+import java.util.Map;
 
 @Configuration
 public class JmsConfiguration {
@@ -58,7 +63,10 @@ public class JmsConfiguration {
     public MessageConverter jacksonJmsMessageConverter() {
         MappingJackson2MessageConverter messageConverter = new MappingJackson2MessageConverter();
         messageConverter.setTargetType(MessageType.TEXT);
-        messageConverter.setTypeIdPropertyName("_type");
+        Map<String,Class<?>> typeIdMap = new HashMap<>();
+        typeIdMap.put(Account.class.getName(),Account.class);
+        typeIdMap.put(Order.class.getName(),Order.class);
+        messageConverter.setTypeIdMappings(typeIdMap);
         return messageConverter;
     }
 }
