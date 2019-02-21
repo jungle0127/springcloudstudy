@@ -1,0 +1,7 @@
+server:
+  port: 8084
+spring:
+  application:
+    name: biz-client
+  activemq:
+    broker-url: tcp://192.168.1.6:61616
