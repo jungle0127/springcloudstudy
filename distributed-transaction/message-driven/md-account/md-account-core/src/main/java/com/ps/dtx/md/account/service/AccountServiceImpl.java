@@ -2,6 +2,7 @@ package com.ps.dtx.md.account.service;
 
 import com.ps.dtx.md.account.dao.repository.AccountRepository;
 import com.ps.dtx.md.account.model.Account;
+import com.ps.dtx.md.account.model.AccountJmsDestinationConstant;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +16,7 @@ public class AccountServiceImpl implements AccountService {
     @Autowired
     private AccountRepository accountRepository;
     @Transactional
-    @JmsListener(containerFactory = "jmsListenerContainerFactory",destination = "md:account:queue:debit")
+    @JmsListener(containerFactory = "jmsListenerContainerFactory",destination = AccountJmsDestinationConstant.ACCOUNT_DEBIT_DESTINATION)
     @Override
     public void debit(Account account) {
         String userId = account.getUserId();

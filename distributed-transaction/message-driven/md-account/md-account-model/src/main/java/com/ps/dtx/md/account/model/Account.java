@@ -1,6 +1,8 @@
 package com.ps.dtx.md.account.model;
 
-public class Account {
+import java.io.Serializable;
+
+public class Account implements Serializable {
     private String userId;
     private Integer money;
 

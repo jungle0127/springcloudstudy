@@ -1,0 +1,16 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: md-order
+  datasource:
+    url: jdbc:mysql://192.168.1.6:3307/ps_order
+    username: root
+    password: lotus
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  activemq:
+    url: tcp://192.168.1.6:61616
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://ps:lotus@localhost:8761/eureka

@@ -8,6 +8,8 @@ spring:
     username: root
     password: lotus
     driver-class-name: com.mysql.cj.jdbc.Driver
+  activemq:
+    url: tcp://192.168.105.129:61616
 eureka:
   client:
     serviceUrl:

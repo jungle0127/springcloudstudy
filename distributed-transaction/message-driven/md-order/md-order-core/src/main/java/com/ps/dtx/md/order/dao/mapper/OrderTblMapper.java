@@ -4,6 +4,8 @@ import com.ps.dtx.md.order.dao.model.OrderTbl;
 import org.apache.ibatis.annotations.*;
 import org.apache.ibatis.type.JdbcType;
 
+import java.util.List;
+
 public interface OrderTblMapper {
     @Delete({
         "delete from order_tbl",
@@ -38,6 +40,19 @@ public interface OrderTblMapper {
         @Result(column="money", property="money", jdbcType=JdbcType.INTEGER)
     })
     OrderTbl selectByPrimaryKey(Integer id);
+    @Select({
+            "select id, user_id, commodity_code, count, money ",
+            "from order_tbl",
+            "where user_id = #{id, jdbcType=INTEGER}"
+    })
+    @Results({
+            @Result(column="id", property="id", jdbcType=JdbcType.INTEGER, id=true),
+            @Result(column="user_id", property="userId", jdbcType=JdbcType.VARCHAR),
+            @Result(column="commodity_code", property="commodityCode", jdbcType=JdbcType.VARCHAR),
+            @Result(column="count", property="count", jdbcType=JdbcType.INTEGER),
+            @Result(column="money", property="money", jdbcType=JdbcType.INTEGER)
+    })
+    List<OrderTbl> selectByUserId(String userId);
 
     @UpdateProvider(type=OrderTblSqlProvider.class, method="updateByPrimaryKeySelective")
     int updateByPrimaryKeySelective(OrderTbl record);
