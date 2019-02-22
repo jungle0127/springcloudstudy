@@ -16,27 +16,21 @@ public class OrderService {
     @Qualifier("orderJdbcTemplate")
     private JdbcTemplate orderJdbcTemplate;
     @Autowired
-    @Qualifier("storeageJdbcTemplate")
-    private JdbcTemplate storeageJdbcTemplate;
+    @Qualifier("storageJdbcTemplate")
+    private JdbcTemplate storageJdbcTemplate;
 
-    private final String CREATE_ORDER_SQL = "INSERT INTO t_order(`customer_id`,`storage_id`,`amount`,`order_desc`) VALUES (?,?,?,?)";
-    private final String UPDATE_STOREAGE_SQL = "UPDATE t_storage SET inventory = inventory - ?, update_time = now() WHERE id = ?";
+    private final String CREATE_ORDER_SQL = "INSERT INTO order_tbl(`user_id`,`commodity_code`,`count`,`money`) VALUES (?,?,?,?)";
+    private final String UPDATE_STORAGE_SQL = "UPDATE storage_tbl SET count = count - ? WHERE commodity_code = ?";
 
     @Transactional
-    public Boolean createOrder(Order order){
-        try{
-            int affectedOrderRows =  this.orderJdbcTemplate.update(CREATE_ORDER_SQL,order.getCustomerId(),order.getStorageId(), order.getAmmount(),order.getOrderDesc());
-            int affectedStoreageRows = this.storeageJdbcTemplate.update(UPDATE_STOREAGE_SQL, order.getAmmount(),order.getStorageId());
-            if(affectedOrderRows != 1 || affectedStoreageRows != 1){
-                return false;
-            }
-            if(affectedOrderRows == 1){
-                throw new RuntimeException("pseudo exception.");
-            }
-
-        } catch (Exception e){
-            logger.error("create order failed with exception: {}",e.getMessage());
-            throw e;
+    public Boolean createOrder(Order order) {
+        int affectedOrderRows = this.orderJdbcTemplate.update(CREATE_ORDER_SQL, order.getUserId(), order.getCommodityCode(), order.getCount(), order.getMoney());
+        int affectedStoreageRows = this.storageJdbcTemplate.update(UPDATE_STORAGE_SQL, order.getCount(), order.getCommodityCode());
+        if (affectedOrderRows != 1 || affectedStoreageRows != 1) {
+            return false;
+        }
+        if (affectedOrderRows == 1) {
+            throw new RuntimeException("pseudo exception.");
         }
         return true;
     }

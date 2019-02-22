@@ -1,72 +1,60 @@
 package com.ps.dtx.domain;
 
-import java.util.Date;
-
 public class Order {
-    private Long id;
-    private Long customerId;
-    private Long storageId;
-    private Integer ammount;
-    private String orderDesc;
-    private Date createTime;
+    private Integer id;
+    private String userId;
+    private String commodityCode;
+    private Integer count;
+    private Integer money;
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public Long getCustomerId() {
-        return customerId;
+    public String getUserId() {
+        return userId;
     }
 
-    public void setCustomerId(Long customerId) {
-        this.customerId = customerId;
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
-    public Long getStorageId() {
-        return storageId;
+    public String getCommodityCode() {
+        return commodityCode;
     }
 
-    public void setStorageId(Long storageId) {
-        this.storageId = storageId;
+    public void setCommodityCode(String commodityCode) {
+        this.commodityCode = commodityCode;
     }
 
-    public Integer getAmmount() {
-        return ammount;
+    public Integer getCount() {
+        return count;
     }
 
-    public void setAmmount(Integer ammount) {
-        this.ammount = ammount;
+    public void setCount(Integer count) {
+        this.count = count;
     }
 
-    public String getOrderDesc() {
-        return orderDesc;
+    public Integer getMoney() {
+        return money;
     }
 
-    public void setOrderDesc(String orderDesc) {
-        this.orderDesc = orderDesc;
-    }
-
-    public Date getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
+    public void setMoney(Integer money) {
+        this.money = money;
     }
 
     @Override
     public String toString() {
         return "Order{" +
                 "id=" + id +
-                ", customerId=" + customerId +
-                ", storeageId=" + storageId +
-                ", ammount=" + ammount +
-                ", orderDesc='" + orderDesc + '\'' +
-                ", createTime=" + createTime +
+                ", userId='" + userId + '\'' +
+                ", commodityCode='" + commodityCode + '\'' +
+                ", count=" + count +
+                ", money=" + money +
                 '}';
     }
 }
