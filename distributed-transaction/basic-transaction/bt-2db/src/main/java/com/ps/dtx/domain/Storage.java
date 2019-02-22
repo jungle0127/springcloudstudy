@@ -1,7 +1,5 @@
 package com.ps.dtx.domain;
 
-import java.util.Date;
-
 public class Storage {
     private Integer id;
     private String commodityCode;

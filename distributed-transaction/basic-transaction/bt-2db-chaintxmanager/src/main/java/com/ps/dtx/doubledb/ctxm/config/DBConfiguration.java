@@ -32,22 +32,22 @@ public class DBConfiguration {
         return new JdbcTemplate(orderDataSource);
     }
     @Bean
-    @ConfigurationProperties(prefix = "spring.storeage-datasource")
-    public DataSourceProperties storeageDataSourceProperties(){
+    @ConfigurationProperties(prefix = "spring.storage-datasource")
+    public DataSourceProperties storageDataSourceProperties(){
         return new DataSourceProperties();
     }
     @Bean
-    public DataSource storeageDataSource(){
-        return storeageDataSourceProperties().initializeDataSourceBuilder().type(HikariDataSource.class).build();
+    public DataSource storageDataSource(){
+        return storageDataSourceProperties().initializeDataSourceBuilder().type(HikariDataSource.class).build();
     }
     @Bean
-    public JdbcTemplate storeageJdbcTemplate(@Qualifier("storeageDataSource") DataSource storeageDataSource){
-        return new JdbcTemplate(storeageDataSource);
+    public JdbcTemplate storageJdbcTemplate(@Qualifier("storageDataSource") DataSource storageDataSource){
+        return new JdbcTemplate(storageDataSource);
     }
 
     @Bean
     public PlatformTransactionManager platformTransactionManager(){
-        DataSourceTransactionManager storageDataSoruceTransactionManager = new DataSourceTransactionManager(storeageDataSource());
+        DataSourceTransactionManager storageDataSoruceTransactionManager = new DataSourceTransactionManager(storageDataSource());
         DataSourceTransactionManager orderDataSourceTransactionManager = new DataSourceTransactionManager(orderDataSource());
         ChainedTransactionManager chainedTransactionManager = new ChainedTransactionManager(storageDataSoruceTransactionManager,orderDataSourceTransactionManager);
         return chainedTransactionManager;

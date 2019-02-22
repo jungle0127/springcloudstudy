@@ -1,62 +1,40 @@
 package com.ps.dtx.doubledb.ctxm.domain;
 
-import java.util.Date;
-
 public class Storage {
-    private Long id;
-    private String productName;
-    private Integer inventory;
-    private Date createTime;
-    private Date updateTime;
+    private Integer id;
+    private String commodityCode;
+    private Integer count;
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public String getProductName() {
-        return productName;
+    public String getCommodityCode() {
+        return commodityCode;
     }
 
-    public void setProductName(String productName) {
-        this.productName = productName;
+    public void setCommodityCode(String commodityCode) {
+        this.commodityCode = commodityCode;
     }
 
-    public Integer getInventory() {
-        return inventory;
+    public Integer getCount() {
+        return count;
     }
 
-    public void setInventory(Integer inventory) {
-        this.inventory = inventory;
-    }
-
-    public Date getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
-    }
-
-    public Date getUpdateTime() {
-        return updateTime;
-    }
-
-    public void setUpdateTime(Date updateTime) {
-        this.updateTime = updateTime;
+    public void setCount(Integer count) {
+        this.count = count;
     }
 
     @Override
     public String toString() {
         return "Storage{" +
                 "id=" + id +
-                ", productName='" + productName + '\'' +
-                ", inventory=" + inventory +
-                ", createTime=" + createTime +
-                ", updateTime=" + updateTime +
+                ", commodityCode='" + commodityCode + '\'' +
+                ", count=" + count +
                 '}';
     }
 }

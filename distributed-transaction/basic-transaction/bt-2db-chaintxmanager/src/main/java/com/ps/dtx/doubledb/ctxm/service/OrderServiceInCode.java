@@ -19,22 +19,22 @@ public class OrderServiceInCode {
     @Qualifier("orderJdbcTemplate")
     private JdbcTemplate orderJdbcTemplate;
     @Autowired
-    @Qualifier("storeageJdbcTemplate")
-    private JdbcTemplate storeageJdbcTemplate;
+    @Qualifier("storageJdbcTemplate")
+    private JdbcTemplate storageJdbcTemplate;
     @Autowired
     private PlatformTransactionManager transactionManager;
 
-    private final String CREATE_ORDER_SQL = "INSERT INTO t_order(`customer_id`,`storage_id`,`amount`,`order_desc`) VALUES (?,?,?,?)";
-    private final String UPDATE_STOREAGE_SQL = "UPDATE t_storage SET inventory = inventory - ?, update_time = now() WHERE id = ?";
+    private final String CREATE_ORDER_SQL = "INSERT INTO order_tbl(`user_id`,`commodity_code`,`count`,`money`) VALUES (?,?,?,?)";
+    private final String UPDATE_STORAGE_SQL = "UPDATE storage_tbl SET count = count - ? WHERE commodity_code = ?";
 
     public Boolean createOrder(Order order){
         TransactionDefinition transactionDefinition = new DefaultTransactionDefinition();
         TransactionStatus transactionStatus = this.transactionManager.getTransaction(transactionDefinition);
         try{
-            int affectedOrderRows =  this.orderJdbcTemplate.update(CREATE_ORDER_SQL,order.getCustomerId(),order.getStorageId(), order.getAmount(),order.getOrderDesc());
-            int affectedStoreageRows = this.storeageJdbcTemplate.update(UPDATE_STOREAGE_SQL, order.getAmount(),order.getStorageId());
+            int affectedOrderRows = this.orderJdbcTemplate.update(CREATE_ORDER_SQL, order.getUserId(), order.getCommodityCode(), order.getCount(), order.getMoney());
+            int affectedStorageRows = this.storageJdbcTemplate.update(UPDATE_STORAGE_SQL, order.getCount(), order.getCommodityCode());
             this.transactionManager.commit(transactionStatus);
-            if(affectedOrderRows != 1 || affectedStoreageRows != 1){
+            if(affectedOrderRows != 1 || affectedStorageRows != 1){
                 return false;
             }
         } catch (Exception e){
