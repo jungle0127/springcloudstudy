@@ -25,14 +25,13 @@ public class OrderServiceImpl implements OrderService {
     @Override
     @JmsListener(destination = OrderJmsDestinationConstant.ORDER_CREATE_DESTINATION,containerFactory = "jmsListenerContainerFactory")
     @Transactional
-    public Order create(Order order) {
+    public void create(Order order) {
         Integer affectedRows = this.orderRepository.addOrder(transform(order));
         logger.info("Created order with affected rows:{}", affectedRows);
         Account account = new Account();
         account.setUserId(order.getUserId());
         account.setMoney(order.getMoney() * order.getCount());
         this.jmsTemplate.convertAndSend(AccountJmsDestinationConstant.ACCOUNT_DEBIT_DESTINATION,account);
-        return order;
     }
     private OrderTbl transform(Order order){
         if(null == order){

@@ -1,6 +1,5 @@
 package com.ps.dtx.md.account.config;
 
-import com.ps.dtx.md.account.model.Account;
 import org.apache.activemq.ActiveMQConnectionFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.jms.DefaultJmsListenerContainerFactoryConfigurer;
@@ -59,7 +58,7 @@ public class JmsConfiguration {
     public MessageConverter jacksonJmsMessageConverter() {
         MappingJackson2MessageConverter messageConverter = new MappingJackson2MessageConverter();
         messageConverter.setTargetType(MessageType.TEXT);
-        messageConverter.setTypeIdPropertyName(Account.class.getName());
+        messageConverter.setTypeIdPropertyName("_type");
         return messageConverter;
     }
 }

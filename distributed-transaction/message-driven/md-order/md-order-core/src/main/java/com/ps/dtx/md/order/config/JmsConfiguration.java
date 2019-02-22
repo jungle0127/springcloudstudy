@@ -61,12 +61,9 @@ public class JmsConfiguration {
      * 转换Java对象到JSON数据
      */
     public MessageConverter jacksonJmsMessageConverter() {
-        MappingJackson2MessageConverter messageConverter = new MappingJackson2MessageConverter();
-        messageConverter.setTargetType(MessageType.TEXT);
-        Map<String,Class<?>> typeIdMap = new HashMap<>();
-        typeIdMap.put(Account.class.getName(),Account.class);
-        typeIdMap.put(Order.class.getName(),Order.class);
-        messageConverter.setTypeIdMappings(typeIdMap);
-        return messageConverter;
+        MappingJackson2MessageConverter converter = new MappingJackson2MessageConverter();
+        converter.setTargetType(MessageType.TEXT);
+        converter.setTypeIdPropertyName("_type");
+        return converter;
     }
 }

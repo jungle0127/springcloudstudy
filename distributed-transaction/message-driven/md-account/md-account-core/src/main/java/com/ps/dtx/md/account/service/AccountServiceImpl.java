@@ -16,7 +16,8 @@ public class AccountServiceImpl implements AccountService {
     @Autowired
     private AccountRepository accountRepository;
     @Transactional
-    @JmsListener(containerFactory = "jmsListenerContainerFactory",destination = AccountJmsDestinationConstant.ACCOUNT_DEBIT_DESTINATION)
+    @JmsListener(containerFactory = "jmsListenerContainerFactory",
+            destination = AccountJmsDestinationConstant.ACCOUNT_DEBIT_DESTINATION)
     @Override
     public void debit(Account account) {
         String userId = account.getUserId();

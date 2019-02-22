@@ -6,5 +6,5 @@ public interface OrderService {
     /**
      * create order
      */
-    Order create(Order order);
+    void create(Order order);
 }
