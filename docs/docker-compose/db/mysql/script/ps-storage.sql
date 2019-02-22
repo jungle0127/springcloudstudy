@@ -13,7 +13,7 @@ CREATE TABLE `storage_tbl` (
   PRIMARY KEY (`id`),
   UNIQUE KEY (`commodity_code`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
+INSERT INTO storage_tbl(commodity_code,count) VALUES('cc1',1000);
 DROP TABLE IF EXISTS `undo_log`;
 CREATE TABLE `undo_log` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,

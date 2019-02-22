@@ -1,8 +1,5 @@
 package com.ps.dtx.md.facade.config;
 
-import com.ps.dtx.md.account.model.Account;
-import com.ps.dtx.md.order.model.Order;
-import com.ps.dtx.md.storage.model.Storage;
 import org.apache.activemq.ActiveMQConnectionFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.jms.DefaultJmsListenerContainerFactoryConfigurer;
@@ -10,20 +7,20 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jms.config.DefaultJmsListenerContainerFactory;
 import org.springframework.jms.config.JmsListenerContainerFactory;
+import org.springframework.jms.connection.JmsTransactionManager;
 import org.springframework.jms.connection.TransactionAwareConnectionFactoryProxy;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.jms.support.converter.MappingJackson2MessageConverter;
 import org.springframework.jms.support.converter.MessageConverter;
 import org.springframework.jms.support.converter.MessageType;
 import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.support.AbstractPlatformTransactionManager;
 
 import javax.jms.ConnectionFactory;
-import java.util.HashMap;
-import java.util.Map;
 
-//@Configuration
+@Configuration
 public class JmsConfiguration {
-    @Value("${spring.activemq.url}")
+    @Value("${spring.activemq.broker-url}")
     private String brokerUrl;
     @Bean
     public ConnectionFactory connectionFactory() {
@@ -42,7 +39,13 @@ public class JmsConfiguration {
         jmsTemplate.setSessionTransacted(true);
         return jmsTemplate;
     }
-
+    @Bean
+    public PlatformTransactionManager platformTransactionManager(){
+        JmsTransactionManager jmsTransactionManager = new JmsTransactionManager();
+        jmsTransactionManager.setConnectionFactory(connectionFactory());
+        jmsTransactionManager.setTransactionSynchronization(AbstractPlatformTransactionManager.SYNCHRONIZATION_ALWAYS);
+        return jmsTransactionManager;
+    }
     @Bean
     public JmsListenerContainerFactory<?> jmsListenerContainerFactory(ConnectionFactory connectionFactory,
                                                                       PlatformTransactionManager transactionManager,
@@ -63,11 +66,7 @@ public class JmsConfiguration {
     public MessageConverter jacksonJmsMessageConverter() {
         MappingJackson2MessageConverter messageConverter = new MappingJackson2MessageConverter();
         messageConverter.setTargetType(MessageType.TEXT);
-        Map<String,Class<?>> typeIdMap = new HashMap<>();
-        typeIdMap.put(Order.class.getName(), Order.class);
-        typeIdMap.put(Account.class.getName(),Account.class);
-        typeIdMap.put(Storage.class.getName(),Storage.class);
-        messageConverter.setTypeIdMappings(typeIdMap);
+        messageConverter.setTypeIdPropertyName("_type");
         return messageConverter;
     }
 }

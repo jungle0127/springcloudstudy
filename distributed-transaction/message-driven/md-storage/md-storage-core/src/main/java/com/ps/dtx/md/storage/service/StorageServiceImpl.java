@@ -19,7 +19,7 @@ public class StorageServiceImpl implements StorageService {
     @Autowired
     private JmsTemplate jmsTemplate;
     @Override
-    @JmsListener(destination = StorageJmsDestinationConstant.STORAGE_CREATE_DESTINATION,containerFactory = "jmsListenerContainerFactory")
+    @JmsListener(destination = StorageJmsDestinationConstant.STORAGE_CREATE_DESTINATION,containerFactory = "containerFactory")
     @Transactional
     public void deduct(Storage storage) {
         Integer affectedRows = this.storageRepository.updateInventory(storage.getCommodityCode(),storage.getCount());

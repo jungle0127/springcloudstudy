@@ -33,7 +33,7 @@ public interface StorageTblMapper {
         @Result(column="commodity_code", property="commodityCode", jdbcType=JdbcType.VARCHAR),
         @Result(column="count", property="count", jdbcType=JdbcType.INTEGER)
     })
-    StorageTbl selectByPrimaryKey(Integer id);
+    StorageTbl selectByPrimaryKey(@Param("id") Integer id);
     @Select({
             "select",
             "id, commodity_code, count",
@@ -45,7 +45,7 @@ public interface StorageTblMapper {
             @Result(column="commodity_code", property="commodityCode", jdbcType=JdbcType.VARCHAR),
             @Result(column="count", property="count", jdbcType=JdbcType.INTEGER)
     })
-    StorageTbl selectByCommodityCode(String commodityCode);
+    StorageTbl selectByCommodityCode(@Param("commodityCode") String commodityCode);
     @UpdateProvider(type=StorageTblSqlProvider.class, method="updateByPrimaryKeySelective")
     int updateByPrimaryKeySelective(StorageTbl record);
 
@@ -61,5 +61,5 @@ public interface StorageTblMapper {
             "set count = count - #{count,jdbcType=INTEGER}",
             "where commodity_code = #{commodityCode, jdbcType=VARCHAR}"
     })
-    int updateInventory(String commodityCode, Integer count);
+    int updateInventory(@Param("commodityCode") String commodityCode, @Param("count") Integer count);
 }
