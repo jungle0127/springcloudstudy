@@ -12,7 +12,10 @@ CREATE TABLE `account_tbl` (
   `money` int(11) DEFAULT 0,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
+INSERT INTO account_tbl(user_id,money) VALUES ('1',1000);
+--
+-- fescar table
+--
 DROP TABLE IF EXISTS `undo_log`;
 CREATE TABLE `undo_log` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
