@@ -10,9 +10,6 @@
     <modelVersion>4.0.0</modelVersion>
     <packaging>pom</packaging>
     <modules>
-        <module>md-order-imc</module>
-        <module>md-user</module>
-        <module>md-ticket</module>
         <module>registry-center</module>
         <module>proxy-zuul</module>
         <module>md-account</module>

@@ -11,9 +11,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 @FeignClient(value = "md-storage", path = "/api/v1/storage")
 public interface StorageFeignClient extends StorageInfoService {
     @GetMapping("/{id}")
-    Storage getStorage(@PathVariable Integer id);
+    Storage getStorage(@PathVariable(name = "id") Integer id);
     @GetMapping("/code/{commodityCode}")
-    Storage getStorage(String commodityCode);
+    Storage getStorage(@PathVariable(name = "commodityCode") String commodityCode);
     @PostMapping("/")
     Boolean addStorage(@RequestBody Storage storage);
 }

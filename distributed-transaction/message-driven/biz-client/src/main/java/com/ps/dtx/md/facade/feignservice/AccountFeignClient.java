@@ -8,5 +8,5 @@ import org.springframework.web.bind.annotation.PathVariable;
 @FeignClient(value = "md-account",path = "/api/v1/account")
 public interface AccountFeignClient extends AccountInfoService {
     @GetMapping("/deposit/{userId}")
-    Integer getAccount(@PathVariable String userId);
+    Integer getAccount(@PathVariable(name = "userId") String userId);
 }
