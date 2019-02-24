@@ -3,9 +3,11 @@ package com.ps.dtx.fd.account.config;
 import com.alibaba.druid.pool.DruidDataSource;
 import com.alibaba.fescar.rm.datasource.DataSourceProxy;
 import org.apache.ibatis.session.SqlSessionFactory;
+import org.apache.ibatis.transaction.jdbc.JdbcTransactionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.annotation.MapperScan;
-import org.springframework.beans.factory.annotation.Value;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
@@ -15,21 +17,15 @@ import javax.sql.DataSource;
 @Configuration
 @MapperScan(basePackages = "com.ps.dtx.fd.account.dao.mapper")
 public class DatasourceConfiguration {
-    @Value("${spring.datasource.url}")
-    private String dataSourceUrl;
-    @Value("${spring.datasource.username}")
-    private String userName;
-    @Value("${spring.datasource.password}")
-    private String password;
-    @Value("${spring.datasource.driver-class-name}")
-    private String driverClassName;
+    @Autowired
+    private DataSourceProperties dataSourceProperties;
     @Bean
     public DruidDataSource druidDataSource(){
         DruidDataSource druidDataSource = new DruidDataSource();
-        druidDataSource.setUrl(this.dataSourceUrl);
-        druidDataSource.setUsername(this.userName);
-        druidDataSource.setPassword(this.password);
-        druidDataSource.setDriverClassName(this.driverClassName);
+        druidDataSource.setUrl(this.dataSourceProperties.getUrl());
+        druidDataSource.setUsername(this.dataSourceProperties.getUsername());
+        druidDataSource.setPassword(this.dataSourceProperties.getPassword());
+        druidDataSource.setDriverClassName(this.dataSourceProperties.getDriverClassName());
         druidDataSource.setUseGlobalDataSourceStat(true);
         return druidDataSource;
     }
@@ -41,6 +37,7 @@ public class DatasourceConfiguration {
     public SqlSessionFactory sqlSessionFactory() throws Exception {
         SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
         sqlSessionFactoryBean.setDataSource(dataSourceProxy());
+        sqlSessionFactoryBean.setTransactionFactory(new JdbcTransactionFactory());
         return sqlSessionFactoryBean.getObject();
     }
     @Bean
