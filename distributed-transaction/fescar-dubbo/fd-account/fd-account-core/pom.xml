@@ -33,6 +33,10 @@
             <artifactId>fescar-rm-datasource</artifactId>
             <version>${fescar.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.alibaba.fescar</groupId>
+            <artifactId>fescar-spring</artifactId>
+        </dependency>
         <!-- spring -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
