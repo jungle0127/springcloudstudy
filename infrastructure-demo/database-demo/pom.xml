@@ -13,6 +13,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>mybatis-dynamic-datasource</module>
+        <module>mybatis-plus-demo</module>
     </modules>
 
 

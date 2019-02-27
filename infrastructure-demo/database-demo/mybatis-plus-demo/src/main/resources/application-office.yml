@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: mybatis-plus-demo
+  datasource:
+    url: jdbc:mysql://192.168.105.129:3309/ps_account
+    username: root
+    password: lotus
+    driver-class-name: com.mysql.cj.jdbc.Driver
