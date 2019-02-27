@@ -2,6 +2,7 @@ package com.ps.dtx.fd.account.config;
 
 import com.alibaba.druid.pool.DruidDataSource;
 import com.alibaba.fescar.rm.datasource.DataSourceProxy;
+import com.alibaba.fescar.spring.annotation.GlobalTransactionScanner;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.transaction.jdbc.JdbcTransactionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
@@ -11,8 +12,6 @@ import org.springframework.boot.autoconfigure.jdbc.DataSourceProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
-
-import javax.sql.DataSource;
 
 @Configuration
 @MapperScan(basePackages = "com.ps.dtx.fd.account.dao.mapper")
@@ -30,7 +29,7 @@ public class DatasourceConfiguration {
         return druidDataSource;
     }
     @Bean
-    public DataSource dataSourceProxy(){
+    public DataSourceProxy dataSourceProxy(){
         return new DataSourceProxy(druidDataSource());
     }
     @Bean
@@ -44,6 +43,9 @@ public class DatasourceConfiguration {
     public DataSourceTransactionManager dataSourceTransactionManager(){
         return new DataSourceTransactionManager(dataSourceProxy());
     }
-
+    @Bean
+    public GlobalTransactionScanner globalTransactionScanner(){
+        return new GlobalTransactionScanner("fescar-account","fescar-dubbo-nacos-group");
+    }
 
 }
