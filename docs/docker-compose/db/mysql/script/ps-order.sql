@@ -28,16 +28,3 @@ CREATE TABLE `undo_log` (
   PRIMARY KEY (`id`),
   KEY `idx_unionkey` (`xid`,`branch_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=159 DEFAULT CHARSET=utf8;
-
---
--- PS
---
-DROP TABLE IF EXISTS `t_order`;
-CREATE TABLE `t_order`(
-	`id` bigint auto_increment PRIMARY KEY,
-    `customer_id` bigint NOT NULL,
-    `storage_id` bigint NOT NULL,
-    `amount` int NOT NULL,
-    `order_desc` varchar(255),
-    `create_time` timestamp default now()
-) ENGINE = InnoDB DEFAULT CHARSET=utf8;

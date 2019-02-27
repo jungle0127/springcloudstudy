@@ -27,17 +27,3 @@ CREATE TABLE `undo_log` (
   PRIMARY KEY (`id`),
   KEY `idx_unionkey` (`xid`,`branch_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=159 DEFAULT CHARSET=utf8;
-
---
--- demo
---
-DROP TABLE IF EXISTS `t_storage`;
-CREATE TABLE `t_storage`(
-	`id` bigint auto_increment primary key,
-    `product_name` varchar(255) NOT NULL,
-    `inventory` int NOT NULL,
-    `create_time` timestamp default now(),
-    `update_time` timestamp default now()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-INSERT INTO t_storage( `product_name`,`inventory`) VALUES ('pseudo product',1000);
