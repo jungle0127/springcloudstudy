@@ -6,7 +6,6 @@ import com.alibaba.fescar.spring.annotation.GlobalTransactionScanner;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.transaction.jdbc.JdbcTransactionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
-import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceProperties;
 import org.springframework.context.annotation.Bean;
@@ -14,7 +13,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 
 @Configuration
-@MapperScan(basePackages = "com.ps.dtx.fd.account.dao.mapper")
 public class DatasourceConfiguration {
     @Autowired
     private DataSourceProperties dataSourceProperties;
@@ -47,5 +45,4 @@ public class DatasourceConfiguration {
     public GlobalTransactionScanner globalTransactionScanner(){
         return new GlobalTransactionScanner("fescar-account","fescar-dubbo-nacos-group");
     }
-
 }

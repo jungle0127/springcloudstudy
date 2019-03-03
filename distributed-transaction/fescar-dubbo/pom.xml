@@ -18,6 +18,8 @@
         <spring.boot.dubbo.version>0.2.1.RELEASE</spring.boot.dubbo.version>
         <netty.version>4.1.33.Final</netty.version>
         <druid.version>1.1.13</druid.version>
+        <nacos-registry.version>0.0.1</nacos-registry.version>
+        <spring-context-support.version>1.0.2</spring-context-support.version>
     </properties>
 
     <dependencyManagement>

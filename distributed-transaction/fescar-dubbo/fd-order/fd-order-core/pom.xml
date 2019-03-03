@@ -7,11 +7,8 @@
         <groupId>com.ps</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
-    <modelVersion>4.0.0</modelVersion>
-
-    <artifactId>fd-order-core</artifactId>
-
     <dependencies>
+        <!-- brother project -->
         <dependency>
             <groupId>com.ps</groupId>
             <artifactId>fd-order-model</artifactId>
@@ -35,13 +32,17 @@
         <dependency>
             <groupId>com.alibaba.fescar</groupId>
             <artifactId>fescar-rm-datasource</artifactId>
-            <version>${fescar.version}</version>
         </dependency>
-
+        <dependency>
+            <groupId>com.alibaba.fescar</groupId>
+            <artifactId>fescar-spring</artifactId>
+        </dependency>
+        <!-- spring -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-aop</artifactId>
         </dependency>
+        <!-- db -->
         <dependency>
             <groupId>org.mybatis.spring.boot</groupId>
             <artifactId>mybatis-spring-boot-starter</artifactId>
@@ -56,12 +57,12 @@
             <artifactId>druid</artifactId>
             <version>${druid.version}</version>
         </dependency>
+        <!-- Dubbo -->
         <dependency>
             <groupId>com.alibaba.boot</groupId>
             <artifactId>dubbo-spring-boot-starter</artifactId>
             <version>${spring.boot.dubbo.version}</version>
         </dependency>
-        <!-- Dubbo -->
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>dubbo</artifactId>
@@ -76,12 +77,27 @@
             <groupId>org.apache.curator</groupId>
             <artifactId>curator-framework</artifactId>
         </dependency>
+        <!-- nacos -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>dubbo-registry-nacos</artifactId>
+            <version>${nacos-registry.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.alibaba.spring</groupId>
+            <artifactId>spring-context-support</artifactId>
+            <version>${spring-context-support.version}</version>
+        </dependency>
         <!-- UT -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
         </dependency>
     </dependencies>
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>fd-order-core</artifactId>
     <build>
         <finalName>fd-order</finalName>
         <plugins>

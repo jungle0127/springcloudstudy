@@ -12,7 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class OrderServiceImpl implements OrderService {
     @Autowired
     private OrderRepository orderRepository;
-    @Reference(url = "zookeeper://192.168.1.6:2181",interfaceClass = AccountService.class)
+    @Reference(interfaceClass = AccountService.class)
     private AccountService accountService;
     @Override
     public Order create(String userId, String commodityCode, int orderCount) {
