@@ -1,6 +1,8 @@
 package com.ps.dtx.fd.order.model;
 
-public class Order {
+import java.io.Serializable;
+
+public class Order implements Serializable {
     private Integer id;
     private String userId;
     private String commodityCode;

@@ -12,6 +12,6 @@ public class PurchaseRunner implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         this.businessService.setFlag(true);
-        this.businessService.purchase("uid","cc1",10);
+        this.businessService.purchase("1","cc1",10);
     }
 }
