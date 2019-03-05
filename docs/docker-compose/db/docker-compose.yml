@@ -1,5 +1,16 @@
 version: '3'
 services:
+  ncee_db:
+    image: mysql:5.7
+    restart: always
+    container_name: nceedb
+    environment:
+      MYSQL_ROOT_PASSWORD: lotus
+    volumes:
+      - /data/var/mysql-ncee:/var/lib/mysql-ncee
+      - ./mysql/script/ncee.sql:/docker-entrypoint-initdb.d/ncee.sql
+    ports:
+      - 3306:3306
   psorder_db:
     image: mysql:5.7
     restart: always
