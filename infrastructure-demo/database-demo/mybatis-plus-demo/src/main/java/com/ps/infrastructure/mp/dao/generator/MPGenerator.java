@@ -19,7 +19,7 @@ public class MPGenerator {
     }
     private void generateByTables(boolean serviceNameStartWithI, String packageName, String... tableNames) {
         GlobalConfig config = new GlobalConfig();
-        String dbUrl = "jdbc:mysql://192.168.1.6:3309/ps_account";
+        String dbUrl = "jdbc:mysql://10.12.4.56:3309/ps_account";
         DataSourceConfig dataSourceConfig = new DataSourceConfig();
         dataSourceConfig.setDbType(DbType.MYSQL)
                 .setUrl(dbUrl)
